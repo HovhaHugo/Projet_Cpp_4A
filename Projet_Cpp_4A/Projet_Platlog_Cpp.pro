@@ -14,6 +14,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     profil.cpp \
+    usermanager.cpp \
     users.cpp
 
 HEADERS += \
@@ -21,6 +22,7 @@ HEADERS += \
     login.h \
     mainwindow.h \
     profil.h \
+    usermanager.h \
     users.h
 
 FORMS += \

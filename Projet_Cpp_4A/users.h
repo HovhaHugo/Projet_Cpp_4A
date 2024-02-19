@@ -3,6 +3,7 @@
 
 #include "profil.h"
 
+
 class Users
 {
 private:
@@ -14,6 +15,7 @@ private:
     Profil* profils;
 public:
     Users();
+    Users(const string login, const string nom, const string prenom, const string mdp, bool admin);
     ~Users();
 
     // Getters
@@ -31,7 +33,8 @@ public:
     void setMdp(const string newMdp) { mdp = newMdp; }
     void setAdmin(bool isAdmin) { admin = isAdmin; }
     void setProfil(Profil* newProfils) { profils = newProfils; /*mieux gérer le pointeur*/}
-};
 
+    bool verifyLogin(const string loginTest, const string mdpTest);
+};
 
 #endif // M_USERS_H
