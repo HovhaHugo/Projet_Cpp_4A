@@ -14,14 +14,14 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     profil.cpp \
-    users.cpp
+    user.cpp
 
 HEADERS += \
     bdd.h \
     login.h \
     mainwindow.h \
     profil.h \
-    users.h
+    user.h
 
 FORMS += \
     login.ui \

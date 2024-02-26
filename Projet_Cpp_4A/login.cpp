@@ -1,5 +1,6 @@
 #include "login.h"
 #include "ui_login.h"
+#include "user.h"
 
 login::login(QWidget *parent)
     : QDialog(parent)
@@ -15,6 +16,10 @@ login::~login()
 
 void login::on_pushButton_clicked()
 {
-
+    /*User user;
+    user.setModal(true);
+    user.exec();*/
+    user = new User(this);
+    user->show();
 }
 

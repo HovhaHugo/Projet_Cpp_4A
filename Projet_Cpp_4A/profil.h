@@ -7,10 +7,11 @@ class Profil
 {
 private:
     char* login;
-    char* labem;
+    char* label;
     BDD* acces;
 public:
     Profil();
+
 };
 
 #endif // PROFIL_H

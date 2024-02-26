@@ -5,6 +5,7 @@
 
 class Users
 {
+
 private:
     char* login;
     char* nom;
