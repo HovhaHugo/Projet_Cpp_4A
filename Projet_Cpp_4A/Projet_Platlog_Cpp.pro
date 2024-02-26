@@ -14,22 +14,21 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     profil.cpp \
-    usermanager.cpp \
-    users.cpp
+    user.cpp \
+    usermanager.cpp
 
 HEADERS += \
     bdd.h \
     login.h \
     mainwindow.h \
     profil.h \
-    usermanager.h \
-    users.h
+    user.h \
+    usermanager.h
 
 FORMS += \
     login.ui \
     mainwindow.ui \
-    user.ui \
-    userwindows.ui
+    user.ui
 
 TRANSLATIONS += \
     Projet_Platlog_Cpp_fr_FR.ts

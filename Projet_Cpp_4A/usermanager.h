@@ -1,13 +1,13 @@
 #ifndef USERMANAGER_H
 #define USERMANAGER_H
 
-#include "users.h"
+#include "user.h"
 #include <vector>
 
 class UserManager
 {
 private:
-    vector<Users> listeUsers;
+    vector<User> listeUsers;
 public:
     UserManager();
     ~UserManager();
@@ -17,8 +17,8 @@ public:
     void writeFile(const string pathFichier);
 
     // Getter & Setter
-    vector<Users> getListeUsers() { return listeUsers;}
-    void setListeUsers(const vector<Users> newListeUsers) {listeUsers = newListeUsers;}
+    //vector<User> getListeUsers() { return listeUsers;}
+    //void setListeUsers(const vector<User> newListeUsers) {listeUsers = newListeUsers;}
 
     int searchLogin(const string loginTest, const string mdpTest);
 };

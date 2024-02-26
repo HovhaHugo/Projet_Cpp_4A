@@ -13,11 +13,11 @@ class login : public QDialog
     Q_OBJECT
 
 public:
-    explicit login(QWidget *parent = nullptr);
+    login(QWidget *parent = nullptr);
     ~login();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_ButtonValider_clicked();
 
 private:
     Ui::login *ui;
@@ -25,4 +25,4 @@ private:
 
 };
 
-#endif // LOGIN_H
+#endif

@@ -6,7 +6,7 @@ UserManager::UserManager() {}
 UserManager::~UserManager() {}
 
 //fonction qui va lire le .json et creer la liste des Users
-void UserManager::parseFile(string pathFichier){
+/*void UserManager::parseFile(string pathFichier){
     ifstream fichier(pathFichier);
     string user;
     string delimiter = " ";
@@ -65,4 +65,4 @@ int UserManager::searchLogin(const string loginTest, const string mdpTest) {
         }
     }
     return found;
-}
+}*/
