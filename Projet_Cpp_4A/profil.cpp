@@ -1,9 +1,5 @@
 #include "profil.h"
 
-Profil::Profil() {
-    acces = new BDD();
-}
+Profil::Profil() {}
 
-Profil::~Profil() {
-    delete(acces);
-}
+Profil::~Profil() {}
