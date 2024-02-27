@@ -6,14 +6,8 @@ UserManager::UserManager() {}
 UserManager::~UserManager() {}
 
 //fonction qui va lire le .json et creer la liste des Users
-<<<<<<< Updated upstream
 /*void UserManager::parseFile(string pathFichier){
     ifstream fichier(pathFichier);
-=======
-void UserManager::parseFile(string pathFichier){
-    ifstream fichier;
-    fichier.open(pathFichier);
->>>>>>> Stashed changes
     string user;
     string delimiter = " ";
     //on parcourt tous les Users stockes dans le fichier
@@ -24,8 +18,8 @@ void UserManager::parseFile(string pathFichier){
         string mdp;
         string nom;
         string prenom;
-        bool admin=false;
-        while(!user.empty() && count<=4){
+        bool admin;
+        while(!user.empty()){
             //param prend comme valeur du debut jusqu'au premier espace
             string param = user.substr(0, user.find(delimiter));
             switch(count){
@@ -43,6 +37,7 @@ void UserManager::parseFile(string pathFichier){
                 break;
             case 4:
                 if(param.compare("admin")) admin = true;
+                else admin = false;
                 break;
             }
             count++;
@@ -51,15 +46,14 @@ void UserManager::parseFile(string pathFichier){
         }
         listeUsers.push_back(Users(login, nom, prenom, mdp, admin));
     }
-    fichier.close();
 }
 
 void UserManager::writeFile(const string pathFichier){
     ofstream fichier(pathFichier);
     for(Users i:listeUsers){
         string admin ="";
-        if(i.isAdmin()) admin = "admin ";
-        fichier << i.getLogin() + ' ' + i.getMdp() + ' ' + i.getNom() + ' ' + i.getPrenom() + ' ' + admin;
+        if(i.isAdmin()) admin = " admin";
+        fichier << i.getLogin() + ' ' + i.getMdp() + ' ' + i.getNom() + ' ' + i.getPrenom() + admin;
     }
 }
 
