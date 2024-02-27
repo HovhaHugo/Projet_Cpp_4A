@@ -20,7 +20,7 @@ private:
     string prenom;
     string mdp;
     bool admin;
-    Profil* profils;
+    vector<Profil> profils;
 public:
     User();
     User(QWidget *parent = nullptr);
@@ -33,7 +33,7 @@ public:
     string getPrenom() { return prenom; }
     string getMdp() { return mdp; }
     bool isAdmin() { return admin; }
-    Profil* getProfil() { return profils; }
+    vector<Profil> getProfil() { return profils; }
 
     // Setters
     void setLogin(const string newLogin) { login = newLogin; }
@@ -41,7 +41,7 @@ public:
     void setPrenom(const string newPrenom) { prenom = newPrenom; }
     void setMdp(const string newMdp) { mdp = newMdp; }
     void setAdmin(bool isAdmin) { admin = isAdmin; }
-    void setProfil(Profil* newProfils) { profils = newProfils; /*mieux gérer le pointeur*/}
+    void setProfil(vector<Profil> newProfils) { profils = newProfils; /*mieux gérer le pointeur*/}
 
     bool verifyLogin(const string loginTest, const string mdpTest);
 };

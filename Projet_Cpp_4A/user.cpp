@@ -3,7 +3,6 @@
 
 User::User() {
     admin = false;
-    profils = new Profil();
 }
 
 User::User(QWidget *parent): QDialog(parent), ui(new Ui::User)
@@ -18,12 +17,9 @@ User::User(const string login, const string nom, const string prenom, const stri
     this->prenom = prenom;
     this->mdp = mdp;
     this->admin = admin;
-    profils = new Profil();
 }
 
-User::~User(){
-    delete(profils);
-}
+User::~User() {}
 
 bool User::verifyLogin(const string loginTest, const string mdpTest){
     if(loginTest == login && mdpTest == mdp)
