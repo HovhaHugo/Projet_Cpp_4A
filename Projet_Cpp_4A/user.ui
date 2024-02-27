@@ -18,7 +18,7 @@
     <rect>
      <x>30</x>
      <y>40</y>
-     <width>311</width>
+     <width>461</width>
      <height>241</height>
     </rect>
    </property>
@@ -52,7 +52,79 @@
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
+  <widget class="QLabel" name="NomLabel">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>10</y>
+     <width>111</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Vos profils :</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="PrenomLabel">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>10</y>
+     <width>111</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Vos profils :</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="DisconnectButton">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>0</y>
+     <width>100</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Deconnection</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>User</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>470</x>
+     <y>359</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>384</x>
+     <y>303</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>DisconnectButton</sender>
+   <signal>clicked()</signal>
+   <receiver>User</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>428</x>
+     <y>15</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>344</x>
+     <y>10</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

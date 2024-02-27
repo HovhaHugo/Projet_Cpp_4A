@@ -44,13 +44,13 @@ UserManager::~UserManager() {}
             //on supprime le paramètre du string pour passer au prochain
             user.erase(0, user.find(delimiter)+1);
         }
-        listeUsers.push_back(Users(login, nom, prenom, mdp, admin));
+        listeUsers.push_back(User(login, nom, prenom, mdp, admin));
     }
-}
+}*/
 
-void UserManager::writeFile(const string pathFichier){
+/*void UserManager::writeFile(const string pathFichier){
     ofstream fichier(pathFichier);
-    for(Users i:listeUsers){
+    for(User i:listeUsers){
         string admin ="";
         if(i.isAdmin()) admin = " admin";
         fichier << i.getLogin() + ' ' + i.getMdp() + ' ' + i.getNom() + ' ' + i.getPrenom() + admin;

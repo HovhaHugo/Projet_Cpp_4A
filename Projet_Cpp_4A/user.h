@@ -2,6 +2,7 @@
 #define USERS_H
 
 #include <QDialog>
+#include "QStandardItemModel"
 #include "profil.h"
 
 
@@ -15,12 +16,19 @@ class User :public QDialog
 
 private:
     Ui::User *ui;
+    QStandardItemModel *modele;
+
     string login;
     string nom;
     string prenom;
     string mdp;
     bool admin;
     vector<Profil> profils;
+
+private slots:
+    void affichageProfilsUser();
+
+    void on_DisconnectButton_clicked();
 public:
     User();
     User(QWidget *parent = nullptr);
@@ -43,7 +51,9 @@ public:
     void setAdmin(bool isAdmin) { admin = isAdmin; }
     void setProfil(vector<Profil> newProfils) { profils = newProfils; /*mieux gérer le pointeur*/}
 
+    void setUser(string login, string nom, string prenom);
     bool verifyLogin(const string loginTest, const string mdpTest);
+
 };
 
 #endif // M_USERS_H
