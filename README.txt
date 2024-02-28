@@ -1,0 +1,1 @@
+Il se peut que pour le bon fonctionnement du projet, vous ayez besoin d'entrer l'emplacement du fichier de sauvegarde (txt, json, etc...) comme argument de la fonction ParseFile() dans la classe main.cpp

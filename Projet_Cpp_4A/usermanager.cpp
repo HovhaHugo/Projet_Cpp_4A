@@ -5,7 +5,12 @@ UserManager::UserManager() {}
 
 UserManager::~UserManager() {}
 
-//fonction qui va lire le .json et creer la liste des Users
+/**
+ * @brief UserManager::parseFile
+ * fonction qui va lire le fichier de sauvegarde (txt, json...) et creer la liste des Users
+ * @param pathFichier
+ * string comprenant le path du fichier de sauvegarde
+ */
 void UserManager::parseFile(string pathFichier){
     ifstream fichier(pathFichier);
     string user;
@@ -48,6 +53,12 @@ void UserManager::parseFile(string pathFichier){
     }
 }
 
+/**
+ * @brief UserManager::writeFile
+ * ecrit dans le fichier de sauvegarde (txt, json...) les parametres des differents user
+ * @param pathFichier
+ * string comprenant le path du fichier de sauvegarde
+ */
 void UserManager::writeFile(const string pathFichier){
     ofstream fichier(pathFichier);
     for(User i:listeUsers){
@@ -57,6 +68,16 @@ void UserManager::writeFile(const string pathFichier){
     }
 }
 
+/**
+ * @brief UserManager::searchLogin
+ * recherche à partir d'un login et d'un mot de passe si un user correspond
+ * @param loginTest
+ * string comprenant le login a tester
+ * @param mdpTest
+ * string comprenant le mot de passe a tester
+ * @return
+ * -1 si il n'y a pas de correspondance, l'emplacement de la correspondance dans la liste sinon
+ */
 int UserManager::searchLogin(const string loginTest, const string mdpTest) {
     int found = -1;
     for(int i=0; i<int(listeUsers.size()); i++){

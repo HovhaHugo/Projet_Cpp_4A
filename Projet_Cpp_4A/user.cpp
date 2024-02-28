@@ -2,6 +2,7 @@
 #include "ui_user.h"
 #include "login.h"
 
+//CONSTRUCTEURS
 User::User() {
     admin = false;
 }
@@ -31,10 +32,21 @@ User::User(const string login, const string nom, const string prenom, const stri
     this->admin = admin;
 }
 
+//DESTRUCTEUR
 User::~User(){
     delete ui;
 }
 
+/**
+ * @brief User::verifyLogin
+ * verifie si un login et un mot de passe correspondent a ceux de l'objet de la classe
+ * @param loginTest
+ * string comprenant le login a tester
+ * @param mdpTest
+ * string comprenant le mot de passe a tester
+ * @return
+ * un booleen vrai si il y a correspondance, faux sinon
+ */
 bool User::verifyLogin(const string loginTest, const string mdpTest){
     if(loginTest == login && mdpTest == mdp)
         return true;
@@ -42,10 +54,14 @@ bool User::verifyLogin(const string loginTest, const string mdpTest){
 }
 
 /**
- * @brief User::setUser Permet de sauvegarder le nom, prenom et login de l'utilisateur actuellement connecter.
- * @param login Le login de l'utilisateur actuelle
- * @param nom Le nom de l'utilisateur actuelle
- * @param prenom Le prenom de l'utilisateur actuelle
+ * @brief User::setUser
+ * Permet de sauvegarder le nom, prenom et login de l'utilisateur actuellement connecter.
+ * @param login
+ * Le login de l'utilisateur actuelle
+ * @param nom
+ * Le nom de l'utilisateur actuelle
+ * @param prenom
+ * Le prenom de l'utilisateur actuelle
  */
 void User::setUser(string login, string nom, string prenom){
 
@@ -108,6 +124,10 @@ void User::affichageProfilsUser(){
     ui->tableView->setModel(modele);
 }
 
+/**
+ * @brief User::on_DisconnectButton_clicked
+ * fonction associee au bouton pour deconnecter le user de l'application
+ */
 void User::on_DisconnectButton_clicked()
 {
     class login login;
