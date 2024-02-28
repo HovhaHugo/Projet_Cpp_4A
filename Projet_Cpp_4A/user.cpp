@@ -12,6 +12,16 @@ User::User(QWidget *parent): QDialog(parent), ui(new Ui::User)
     affichageProfilsUser();
 }
 
+User::User(const User &user)
+{
+    this->login = user.login;
+    this->nom = user.nom;
+    this->prenom = user.prenom;
+    this->mdp = user.mdp;
+    this->admin = user.admin;
+    this->profils = user.profils;
+}
+
 User::User(const string login, const string nom, const string prenom, const string mdp, bool admin)
 {
     this->login = login;

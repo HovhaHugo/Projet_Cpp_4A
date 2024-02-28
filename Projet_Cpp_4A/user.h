@@ -32,6 +32,7 @@ private slots:
 public:
     User();
     User(QWidget *parent = nullptr);
+    User(const User &user);
     User(const string login, const string nom, const string prenom, const string mdp, bool admin);
     ~User();
 
