@@ -78,7 +78,6 @@ void User::affichageProfilsUser(){
     Profil *profil1 = new Profil("JDo", "Test", 1);
     QStandardItem *profils1Nom = new QStandardItem("John");
     QStandardItem *profils1Prenom = new QStandardItem("Do");
-    //QStandardItem *profils1Login = new QStandardItem("JDo");
     modele->setItem(0,0, profils1Nom);
     modele->setItem(0,1, profils1Prenom);
     modele->setItem(0,2, new QStandardItem(QString::fromStdString(profil1->getLogin())));
@@ -91,7 +90,7 @@ void User::affichageProfilsUser(){
     QStandardItem *profils2Nom = new QStandardItem("James");
     QStandardItem *profils2Prenom = new QStandardItem("Smith");
     QStandardItem *profils2Login = new QStandardItem("JSmith");
-    bool profil2Status = 1;
+    bool profil2Status = 0;
     modele->setItem(1,0, profils2Nom);
     modele->setItem(1,1, profils2Prenom);
     modele->setItem(1,2, profils2Login);

@@ -66,3 +66,13 @@ int UserManager::searchLogin(const string loginTest, const string mdpTest) {
     }
     return found;
 }
+
+User UserManager::searchAdmin() {
+    User user = NULL;
+    for(int i=0; i<int(listeUsers.size()); i++){
+        if(listeUsers[i].isAdmin()){
+            User user = new User(listeUsers[i].getLogin(), listeUsers[i].getNom(),listeUsers[i].getPrenom(), listeUsers[i].getMdp(), 1);
+        }
+    }
+    return user;
+}

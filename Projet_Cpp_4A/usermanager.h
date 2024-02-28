@@ -17,10 +17,11 @@ public:
     void writeFile(const string pathFichier);
 
     // Getter & Setter
-    //vector<User> getListeUsers() { return listeUsers;}
+    vector<User> getListeUsers() { return listeUsers;}
     //void setListeUsers(const vector<User> newListeUsers) {listeUsers = newListeUsers;}
 
     int searchLogin(const string loginTest, const string mdpTest);
+    User searchAdmin();
 };
 
 #endif // USERMANAGER_H
