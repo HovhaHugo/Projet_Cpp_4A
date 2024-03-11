@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     bdd.cpp \
+    database.cpp \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 
 HEADERS += \
     bdd.h \
+    database.h \
     login.h \
     mainwindow.h \
     profil.h \
@@ -26,6 +28,7 @@ HEADERS += \
     usermanager.h
 
 FORMS += \
+    database.ui \
     login.ui \
     mainwindow.ui \
     user.ui

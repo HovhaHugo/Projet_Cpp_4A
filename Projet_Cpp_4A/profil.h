@@ -2,7 +2,6 @@
 #define PROFIL_H
 
 #include "bdd.h"
-#include <vector>
 
 class Profil
 {

@@ -29,6 +29,8 @@ private slots:
     void affichageProfilsUser();
 
     void on_DisconnectButton_clicked();
+    void on_testButton_clicked();
+
 public:
     User();
     User(QWidget *parent = nullptr);
@@ -51,9 +53,12 @@ public:
     void setMdp(const string newMdp) { mdp = newMdp; }
     void setAdmin(bool isAdmin) { admin = isAdmin; }
     void setProfil(vector<Profil> newProfils) { profils = newProfils; /*mieux gérer le pointeur*/}
+    void addProfil(Profil newProfil) { profils.push_back(newProfil); }
+    void delProfil(Profil supProfil);
 
     void setUser(string login, string nom, string prenom);
     bool verifyLogin(const string loginTest, const string mdpTest);
+
 
 };
 
