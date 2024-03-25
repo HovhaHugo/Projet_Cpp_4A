@@ -52,7 +52,7 @@ public:
     void setPrenom(const string newPrenom) { prenom = newPrenom; }
     void setMdp(const string newMdp) { mdp = newMdp; }
     void setAdmin(bool isAdmin) { admin = isAdmin; }
-    void setProfil(vector<Profil> newProfils) { profils = newProfils; /*mieux gérer le pointeur*/}
+    void setProfil(vector<Profil> newProfils) { profils = newProfils;}
     void addProfil(Profil newProfil) { profils.push_back(newProfil); }
     void delProfil(Profil supProfil);
 

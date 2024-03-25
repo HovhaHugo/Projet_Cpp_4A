@@ -31,6 +31,7 @@ FORMS += \
     database.ui \
     login.ui \
     mainwindow.ui \
+    profil.ui \
     user.ui
 
 TRANSLATIONS += \

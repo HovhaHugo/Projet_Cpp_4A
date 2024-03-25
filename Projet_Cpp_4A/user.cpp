@@ -8,7 +8,9 @@ User::User() {
     admin = false;
 }
 
-User::User(QWidget *parent): QDialog(parent), ui(new Ui::User)
+User::User(QWidget *parent)
+    : QDialog(parent)
+    , ui(new Ui::User)
 {
     ui->setupUi(this);
     affichageProfilsUser();
@@ -94,47 +96,32 @@ void User::setUser(string login, string nom, string prenom){
  */
 void User::affichageProfilsUser(){
     modele = new QStandardItemModel(0,4);
-    /*
-    Parcours par lignes dans un elements :
+
+    //création du vecteur comprenant tous les profils
+    Profil *profil1 = new Profil("JDo", "Do", 1);
+    Profil *profil2 = new Profil("JSmith", "Smith", 0);
+    vector<Profil> vecteurProfil;
+    vecteurProfil.push_back(*profil1);
+    vecteurProfil.push_back(*profil2);
+
+    //Parcours par lignes dans un elements :
     int row = 0;
-    while(il y a des élements){
-        for(int j=0, j<4, j++){
-            QStandardItem *item = new QStandardItem(String);
-            model->setItem(row,j, item);
+    while(row<2){
+        modele->setItem(row,0, new QStandardItem(QString::fromStdString(vecteurProfil[row].getLogin())));
+        modele->setItem(row,1, new QStandardItem(QString::fromStdString(vecteurProfil[row].getLabel())));
+        if(profil1->getActif() == 1){
+            modele->setItem(row,2, new QStandardItem("Actif"));
+        }else{
+            modele->setItem(row,2, new QStandardItem(""));
         }
-    }
-    row++;
-    */
-
-    Profil *profil1 = new Profil("JDo", "Test", 1);
-    QStandardItem *profils1Nom = new QStandardItem("John");
-    QStandardItem *profils1Prenom = new QStandardItem("Do");
-    modele->setItem(0,0, profils1Nom);
-    modele->setItem(0,1, profils1Prenom);
-    modele->setItem(0,2, new QStandardItem(QString::fromStdString(profil1->getLogin())));
-    if(profil1->getActif() == 1){
-        modele->setItem(0,3, new QStandardItem("Actif"));
-    }else{
-        modele->setItem(0,3, new QStandardItem(""));
+        modele->setItem(row,3, new QStandardItem("BOUTON"));
+        row++;
     }
 
-    QStandardItem *profils2Nom = new QStandardItem("James");
-    QStandardItem *profils2Prenom = new QStandardItem("Smith");
-    QStandardItem *profils2Login = new QStandardItem("JSmith");
-    bool profil2Status = 0;
-    modele->setItem(1,0, profils2Nom);
-    modele->setItem(1,1, profils2Prenom);
-    modele->setItem(1,2, profils2Login);
-    if(profil2Status == 1){
-        modele->setItem(1,3, new QStandardItem("Actif"));
-    }else{
-        modele->setItem(1,3, new QStandardItem(""));
-    }
-
-    modele->setHeaderData(0,Qt::Horizontal,"Nom");
-    modele->setHeaderData(1,Qt::Horizontal,"Prenom");
-    modele->setHeaderData(2,Qt::Horizontal,"Login");
-    modele->setHeaderData(3,Qt::Horizontal,"Status");
+    modele->setHeaderData(0,Qt::Horizontal,"Login");
+    modele->setHeaderData(1,Qt::Horizontal,"Label");
+    modele->setHeaderData(2,Qt::Horizontal,"Status");
+    modele->setHeaderData(3,Qt::Horizontal,"Se connecter");
 
     ui->tableView->setModel(modele);
 }
@@ -153,8 +140,16 @@ void User::on_DisconnectButton_clicked()
 
 void User::on_testButton_clicked()
 {
-    class database database;
-    database.setModal(true);
-    database.exec();
-}
+    Profil *profil1 = new Profil("JDo", "Do", 1);
+    Profil *profil2 = new Profil("JSmith", "Smith", 0);
+    vector<Profil> vecteurProfil;
+    vecteurProfil.push_back(*profil1);
+    vecteurProfil.push_back(*profil2);
 
+    int selection = ui->tableView->selectionModel()->selectedRows().first().row();
+    Profil profilSelected = vecteurProfil[selection];
+
+    Profil profil = new Profil(nullptr);
+    profil.setModal(true);
+    profil.exec();
+}

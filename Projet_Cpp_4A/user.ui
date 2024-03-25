@@ -62,7 +62,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Vos profils :</string>
+    <string>Nom</string>
    </property>
   </widget>
   <widget class="QLabel" name="PrenomLabel">
@@ -75,7 +75,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Vos profils :</string>
+    <string>Prenom</string>
    </property>
   </widget>
   <widget class="QPushButton" name="DisconnectButton">
