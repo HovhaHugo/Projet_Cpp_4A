@@ -14,6 +14,7 @@ SOURCES += \
     database.cpp \
     login.cpp \
     main.cpp \
+    mainregister.cpp \
     mainwindow.cpp \
     profil.cpp \
     user.cpp \
@@ -25,6 +26,7 @@ HEADERS += \
     jsonparser.h \
     database.h \
     login.h \
+    mainregister.h \
     mainwindow.h \
     profil.h \
     user.h \
@@ -33,6 +35,7 @@ HEADERS += \
 FORMS += \
     database.ui \
     login.ui \
+    mainregister.ui \
     mainwindow.ui \
     profil.ui \
     user.ui

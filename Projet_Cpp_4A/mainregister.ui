@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>MainRegister</class>
+ <widget class="QMainWindow" name="MainRegister">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -14,14 +14,11 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <property name="layoutDirection">
-    <enum>Qt::LeftToRight</enum>
-   </property>
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>120</y>
+      <x>100</x>
+      <y>60</y>
       <width>411</width>
       <height>291</height>
      </rect>
@@ -32,7 +29,7 @@
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
-    <widget class="QWidget" name="verticalLayoutWidget">
+    <widget class="QWidget" name="verticalLayoutWidget_2">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -56,7 +53,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Connection</string>
+         <string>Inscription</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -64,7 +61,7 @@
        </widget>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <layout class="QHBoxLayout" name="horizontalLayout">
         <property name="sizeConstraint">
          <enum>QLayout::SetNoConstraint</enum>
         </property>
@@ -84,7 +81,7 @@
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
         <property name="sizeConstraint">
          <enum>QLayout::SetNoConstraint</enum>
         </property>
@@ -99,7 +96,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="MDPEdit">
+         <widget class="QLineEdit" name="lineEdit">
           <property name="echoMode">
            <enum>QLineEdit::Password</enum>
           </property>
@@ -151,16 +148,16 @@
   <connection>
    <sender>ButtonValider</sender>
    <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>MainRegister</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>319</x>
-     <y>422</y>
+     <x>196</x>
+     <y>363</y>
     </hint>
     <hint type="destinationlabel">
-     <x>395</x>
-     <y>475</y>
+     <x>308</x>
+     <y>432</y>
     </hint>
    </hints>
   </connection>

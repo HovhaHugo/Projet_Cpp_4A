@@ -1,6 +1,5 @@
 #include "mainwindow.h"
-#include "usermanager.h"
-#include "login.h"
+#include "mainregister.h"
 
 #include "jsonparser.h"
 
@@ -29,10 +28,14 @@ int main(int argc, char *argv[])
     bool haveAdmin = j.JsonGetAdmin();
     cout << haveAdmin;
 
-    //UserManager u = UserManager();
-    //u.parseFile("/Users/hugohovhannessian/Hugo/Etude_Sup/Polytech/DI4/S8/PlatLog_Cpp/Projet_Cpp_4A/listUser.txt");
-    //User user = u.searchAdmin();
-    //User user = NULL;
+    if(haveAdmin == 1){
+        MainRegister r;
+        r.show();
+    }else{
+        MainWindow w;
+        w.show();
+    }
+
     MainWindow w;
     w.show();
     return a.exec();
