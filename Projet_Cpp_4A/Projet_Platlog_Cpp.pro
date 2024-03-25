@@ -10,7 +10,9 @@ CONFIG += c++17
 
 SOURCES += \
     bdd.cpp \
-    jsonparser.cpp \
+
+    jsonparser.cpp\
+    database.cpp \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -20,8 +22,10 @@ SOURCES += \
 
 HEADERS += \
     bdd.h \
+
     json.hpp \
     jsonparser.h \
+    database.h \
     login.h \
     mainwindow.h \
     profil.h \
@@ -29,6 +33,7 @@ HEADERS += \
     usermanager.h
 
 FORMS += \
+    database.ui \
     login.ui \
     mainwindow.ui \
     user.ui

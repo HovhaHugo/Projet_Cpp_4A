@@ -1,6 +1,7 @@
 #include "user.h"
 #include "ui_user.h"
 #include "login.h"
+#include "database.h"
 
 //CONSTRUCTEURS
 User::User() {
@@ -35,6 +36,18 @@ User::User(const string login, const string nom, const string prenom, const stri
 //DESTRUCTEUR
 User::~User(){
     delete ui;
+}
+
+//AUTRES FONCTIONS
+
+void User::delProfil(Profil supProfil){
+    int iteration = 0;
+    bool find = false;
+    while(iteration<=int(profils.size()) && find==false){
+        //on cherche si l'iteration a le meme login que l'element a supprimer
+        if(profils[iteration].getLogin()==supProfil.getLogin()) find=true;
+        else iteration++;
+    }
 }
 
 /**
@@ -72,6 +85,8 @@ void User::setUser(string login, string nom, string prenom){
     ui->PrenomLabel->setText(prenomQT);
 
 }
+
+//FONCTIONS QT
 
 /**
  * @brief User::affichageProfilsUser
@@ -133,5 +148,13 @@ void User::on_DisconnectButton_clicked()
     class login login;
     login.setModal(true);
     login.exec();
+}
+
+
+void User::on_testButton_clicked()
+{
+    class database database;
+    database.setModal(true);
+    database.exec();
 }
 
