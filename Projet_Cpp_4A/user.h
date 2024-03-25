@@ -5,6 +5,8 @@
 #include "QStandardItemModel"
 #include "profil.h"
 
+using namespace std;
+
 
 namespace Ui {
 class User;
@@ -15,15 +17,15 @@ class User :public QDialog
     Q_OBJECT
 
 private:
-    Ui::User *ui;
-    QStandardItemModel *modele;
+        Ui::User *ui;
+        QStandardItemModel *modele;
 
-    string login;
-    string nom;
-    string prenom;
-    string mdp;
-    bool admin;
-    vector<Profil> profils;
+        string login;
+        string nom;
+        string prenom;
+        string mdp;
+        bool admin;
+        vector<Profil> profils;
 
 private slots:
     void affichageProfilsUser();

@@ -49,7 +49,7 @@ void UserManager::parseFile(string pathFichier){
             //on supprime le paramètre du string pour passer au prochain
             user.erase(0, user.find(delimiter)+1);
         }
-        listeUsers.push_back(User(login, nom, prenom, mdp, admin));
+        listeUsers.push_back(new User(login, nom, prenom, mdp, admin) );
     }
 }
 
