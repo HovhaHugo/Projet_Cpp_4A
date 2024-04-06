@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -10,32 +10,34 @@ CONFIG += c++17
 
 SOURCES += \
     bdd.cpp \
-    database.cpp \
+    globals.cpp \
     login.cpp \
     main.cpp \
     mainregister.cpp \
     mainwindow.cpp \
     profil.cpp \
+    sqlitewindow.cpp \
     user.cpp \
     usermanager.cpp
 
 HEADERS += \
     bdd.h \
+    globals.h \
     json.hpp \
-    database.h \
     login.h \
     mainregister.h \
     mainwindow.h \
     profil.h \
+    sqlitewindow.h \
     user.h \
     usermanager.h
 
 FORMS += \
-    database.ui \
     login.ui \
     mainregister.ui \
     mainwindow.ui \
     profil.ui \
+    sqlitewindow.ui \
     user.ui
 
 TRANSLATIONS += \

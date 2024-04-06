@@ -139,7 +139,7 @@ void User::on_DisconnectButton_clicked()
 }
 
 
-void User::on_testButton_clicked()
+void User::on_ShowBDDButton_clicked()
 {
     vector<BDD> acces;
     Profil *profil1 = new Profil("JDo", "Do", 1, acces);

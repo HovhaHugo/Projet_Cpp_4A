@@ -31,7 +31,7 @@ private slots:
     void affichageProfilsUser();
 
     void on_DisconnectButton_clicked();
-    void on_testButton_clicked();
+    void on_ShowBDDButton_clicked();
 
 public:
     User();

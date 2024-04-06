@@ -2,6 +2,7 @@
 #include "mainregister.h"
 
 #include "usermanager.h"
+#include "globals.h"
 
 #include <QApplication>
 #include <QLocale>
@@ -24,11 +25,9 @@ int main(int argc, char *argv[])
 
     string PathToJson = "C:/Users/benja/OneDrive/Bureau/test/test.json";
 
-    UserManager UM = UserManager();
-    UM.parseFile(PathToJson);
-
-    bool haveAdmin = UM.JsonHaveAdmin(PathToJson);
-    //cout << "Admin bool: " << haveAdmin << endl;
+    //globalUserManager.parseFile(PathToJson);      //on récupère les données du json et on les met dans une variable globale
+    vector<User> vectorTest = globalUserManager.getListeUsers();
+    bool haveAdmin = globalUserManager.JsonHaveAdmin(PathToJson);
 
     if(haveAdmin == 0){     //Si on ne trouve pas d'admin on en crée un
         MainRegister r;

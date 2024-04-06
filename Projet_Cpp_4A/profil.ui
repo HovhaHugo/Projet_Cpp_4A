@@ -65,6 +65,19 @@
     </rect>
    </property>
   </widget>
+  <widget class="QPushButton" name="ShowSQLiteButton">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>310</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Afficher SQLite</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections>

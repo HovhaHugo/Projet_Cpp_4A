@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "QStandardItemModel"
 #include "bdd.h"
+#include "sqlitewindow.h"
 
 namespace Ui {
 class Profil;
@@ -23,6 +24,9 @@ private:
     vector<BDD> acces;
 
 private slots:
+    void affichageBDDProfil();
+
+    void on_ShowSQLiteButton_clicked();
 
 public:
     Profil();
@@ -48,7 +52,6 @@ public:
     void addBDD(BDD newBDD) { acces.push_back(newBDD);}
     void delBDD(BDD delBDD);
 
-    void affichageBDDProfil();
     void setProfil(string login, string label);
 };
 

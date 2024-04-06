@@ -1,6 +1,7 @@
 #include "profil.h"
 #include "ui_profil.h"
 
+
 //CONSTRUCTEURS
 Profil::Profil() {}
 
@@ -75,4 +76,11 @@ void Profil::affichageBDDProfil(){
     modele->setHeaderData(1,Qt::Horizontal,"Label");
 
     ui->tableView->setModel(modele);
+}
+
+void Profil::on_ShowSQLiteButton_clicked()
+{
+    class SQLiteWindow sql;
+    sql.setModal(true);
+    sql.exec();
 }

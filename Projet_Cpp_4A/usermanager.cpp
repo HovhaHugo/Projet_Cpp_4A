@@ -14,6 +14,7 @@ UserManager::~UserManager() {}
  * @param pathFichier
  * string comprenant le path du fichier de sauvegarde
  */
+/*
 void UserManager::parseFile(string pathFichier){
     using json = nlohmann::json;
     ifstream fichier(pathFichier);
@@ -56,7 +57,8 @@ void UserManager::parseFile(string pathFichier){
             profils.push_back(Profil(login, label, actif, acces));
         }
         //insertion du User dans listeUsers pour les stocker
-        listeUsers.push_back(new User(login, mdp, nom, prenom, admin, profils));
+        User newUser = new User("login", mdp, nom, prenom, admin, profils);
+        listeUsers.push_back(newUser);
 
         // Print the values
 
@@ -65,6 +67,25 @@ void UserManager::parseFile(string pathFichier){
         cout << "Nom: " << nom << endl;
         cout << "Prenom: " << prenom << endl;
     }
+}*/
+//Fait une erreur lorsqu'il a déjà été compilé, et empêche le débugage.
+//Alternative:
+void UserManager::parseFile(string pathFichier){
+    BDD db1 = BDD(1,"db1","C:/Users/benja/OneDrive/Bureau/test/test.SQLite");
+    BDD db2 = BDD(2,"db2","C:/Users/benja/OneDrive/Bureau/test/test.SQLite");
+    vector<BDD> vectorBDD;
+    vectorBDD.push_back(db1);
+    vectorBDD.push_back(db2);
+    Profil JDo = Profil("JDo", "Do", 1, vectorBDD);
+    Profil JSmith = Profil("JSmith", "Smith", 0, vectorBDD);
+    vector<Profil> vectorJdo;
+    vectorJdo.push_back(JDo);
+    vector<Profil> vectorDouble;
+    vectorDouble.push_back(JSmith);
+    User Benjo = User("bhumbert", "benjooo", "humbert", "benjamin", 0, vectorJdo);
+    User Hugo = User("hhovha", "hugooo", "hovha", "hugo", 1, vectorDouble);
+    listeUsers.push_back(Hugo);
+    listeUsers.push_back(Benjo);
 }
 
 /**
