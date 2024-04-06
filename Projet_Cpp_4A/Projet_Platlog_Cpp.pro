@@ -10,7 +10,6 @@ CONFIG += c++17
 
 SOURCES += \
     bdd.cpp \
-    jsonparser.cpp\
     database.cpp \
     login.cpp \
     main.cpp \
@@ -23,7 +22,6 @@ SOURCES += \
 HEADERS += \
     bdd.h \
     json.hpp \
-    jsonparser.h \
     database.h \
     login.h \
     mainregister.h \

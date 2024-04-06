@@ -21,8 +21,8 @@ void login::on_ButtonValider_clicked()
 {
     //On créer 2 utilisateurs pour tester si l'application fonctionne.
     vector<Profil> profils;
-    User test1 = User("Test", "Do", "John", "test1234", 1, profils);
-    User test2 = User("Test2", "Smith", "James", "test", 1, profils);
+    User test1 = User("Test", "test1234", "Do", "John", 1, profils);
+    User test2 = User("Test2", "test", "Smith", "James", 1, profils);
 
     //On récupére les lignes de saisie pour le mots de passe et l'identifiant
     QString idLine = ui->idLine->text();

@@ -36,7 +36,7 @@ void UserManager::parseFile(string pathFichier){
 
         json Jprofils = users.at(ItUser).at("profils");
         //Tous les Profils du User
-        for(int ItProfil = 0; ItProfil<users.value("nbprofils",0);ItProfil++){
+        for(int ItProfil = 0; ItProfil<users.at(ItUser).value("nbprofils",0);ItProfil++){
             string login = Jprofils.at(ItProfil).at("login");
             string label = Jprofils.at(ItProfil).at("label");
             bool actif = false;
@@ -45,7 +45,7 @@ void UserManager::parseFile(string pathFichier){
 
             json Jbdd = Jprofils.at(ItProfil).at("BDD");
             //Toutes les BDD du Profil
-            for(int ItBDD = 0; ItBDD<Jprofils.value("nbBDD",0);ItBDD++){
+            for(int ItBDD = 0; ItBDD<Jprofils.at(ItProfil).value("nbBDD",0);ItBDD++){
                 int identifiant = Jbdd.at(ItBDD).at("identifiant");
                 string label = Jbdd.at(ItBDD).at("label");
                 string path = Jbdd.at(ItBDD).at("path");
@@ -56,7 +56,7 @@ void UserManager::parseFile(string pathFichier){
             profils.push_back(Profil(login, label, actif, acces));
         }
         //insertion du User dans listeUsers pour les stocker
-        listeUsers.push_back(User(login, mdp, nom, prenom, admin, profils));
+        listeUsers.push_back(new User(login, mdp, nom, prenom, admin, profils));
 
         // Print the values
 

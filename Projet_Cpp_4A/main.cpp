@@ -26,20 +26,17 @@ int main(int argc, char *argv[])
 
     UserManager UM = UserManager();
     UM.parseFile(PathToJson);
+
     bool haveAdmin = UM.JsonHaveAdmin(PathToJson);
+    //cout << "Admin bool: " << haveAdmin << endl;
 
-
-    cout << haveAdmin;
-
-    /*if(haveAdmin == 1){
+    if(haveAdmin == 0){     //Si on ne trouve pas d'admin on en crée un
         MainRegister r;
         r.show();
-    }else{
+        return a.exec();
+    }else{                  //Si on trouve un admin on va directement sur le login
         login w;
         w.show();
-    }*/
-
-    login w;
-    w.show();
-    return a.exec();
+        return a.exec();
+    }
 }
