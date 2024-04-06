@@ -7,7 +7,8 @@ JsonParser::JsonParser() {}
 
 string JsonParser::JsonGetUser(){
     using json = nlohmann::json;
-    ifstream f("/Users/hugohovhannessian/Hugo/Etude_Sup/Polytech/DI4/S8/PlatLog_Cpp/test.json");
+    //ifstream f("/Users/hugohovhannessian/Hugo/Etude_Sup/Polytech/DI4/S8/PlatLog_Cpp/test.json");
+    ifstream f("C:/Users/benja/OneDrive/Bureau/test/test.json");
     json data = json::parse(f);
     // Access the values existing in JSON data
     json users = data.at("users");
@@ -27,7 +28,8 @@ string JsonParser::JsonGetUser(){
 bool JsonParser::JsonGetAdmin(){
     using json = nlohmann::json;
     bool HaveAdmin = false;
-    ifstream f("/Users/hugohovhannessian/Hugo/Etude_Sup/Polytech/DI4/S8/PlatLog_Cpp/test.json");
+    //ifstream f("/Users/hugohovhannessian/Hugo/Etude_Sup/Polytech/DI4/S8/PlatLog_Cpp/test.json");
+    ifstream f("C:/Users/benja/OneDrive/Bureau/test/test.json");
     json data = json::parse(f);
     json users = data.at("users");
     for(int i =0; i<data.value("nombre",0);i++){

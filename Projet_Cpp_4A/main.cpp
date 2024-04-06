@@ -1,7 +1,7 @@
-#include "mainwindow.h"
+#include "login.h"
 #include "mainregister.h"
 
-#include "jsonparser.h"
+#include "usermanager.h"
 
 #include <QApplication>
 #include <QLocale>
@@ -22,21 +22,24 @@ int main(int argc, char *argv[])
         }
     }
 
-    JsonParser j = JsonParser();
-    j.JsonGetUser();
+    string PathToJson = "C:/Users/benja/OneDrive/Bureau/test/test.json";
 
-    bool haveAdmin = j.JsonGetAdmin();
+    UserManager UM = UserManager();
+    UM.parseFile(PathToJson);
+    bool haveAdmin = UM.JsonHaveAdmin(PathToJson);
+
+
     cout << haveAdmin;
 
-    if(haveAdmin == 1){
+    /*if(haveAdmin == 1){
         MainRegister r;
         r.show();
     }else{
-        MainWindow w;
+        login w;
         w.show();
-    }
+    }*/
 
-    MainWindow w;
+    login w;
     w.show();
     return a.exec();
 }

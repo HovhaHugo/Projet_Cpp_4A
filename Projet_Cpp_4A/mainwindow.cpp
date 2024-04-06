@@ -20,8 +20,9 @@ MainWindow::~MainWindow()
 void MainWindow::on_ButtonValider_clicked()
 {
     //On créer 2 utilisateurs pour tester si l'application fonctionne.
-    User test1 = User("Test", "Do", "John", "test1234", 1);
-    User test2 = User("Test2", "Smith", "James", "test", 1);
+    vector<Profil> profils;
+    User test1 = User("Test", "Do", "John", "test1234", 1, profils);
+    User test2 = User("Test2", "Smith", "James", "test", 1, profils);
 
     //On récupére les lignes de saisie pour le mots de passe et l'identifiant
     QString idLine = ui->IDedit->text();

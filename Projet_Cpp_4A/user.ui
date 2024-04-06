@@ -96,12 +96,12 @@
     <rect>
      <x>20</x>
      <y>350</y>
-     <width>93</width>
+     <width>111</width>
      <height>29</height>
     </rect>
    </property>
    <property name="text">
-    <string>test</string>
+    <string>Afficher BDD</string>
    </property>
   </widget>
  </widget>
