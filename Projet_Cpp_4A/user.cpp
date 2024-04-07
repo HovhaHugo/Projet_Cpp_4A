@@ -79,7 +79,7 @@ bool User::verifyLogin(const string loginTest, const string mdpTest){
  * @param prenom
  * Le prenom de l'utilisateur actuelle
  */
-void User::setUser(string login, string nom, string prenom){
+void User::setUser(string nom, string prenom){
 
     QString nomQT = QString::fromStdString(nom);
     QString prenomQT = QString::fromStdString(prenom);
@@ -141,12 +141,12 @@ void User::on_DisconnectButton_clicked()
 
 void User::on_ShowBDDButton_clicked()
 {
-    vector<BDD> acces;
+    /*vector<BDD> acces;
     Profil *profil1 = new Profil("JDo", "Do", 1, acces);
     Profil *profil2 = new Profil("JSmith", "Smith", 0, acces);
     vector<Profil> vecteurProfil;
     vecteurProfil.push_back(*profil1);
-    vecteurProfil.push_back(*profil2);
+    vecteurProfil.push_back(*profil2);*/
 
     //int selection = ui->tableView->selectionModel()->selectedRows().first().row();
     //Profil profilSelected = vecteurProfil[selection];

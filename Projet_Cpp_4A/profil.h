@@ -28,6 +28,8 @@ private slots:
 
     void on_ShowSQLiteButton_clicked();
 
+    void on_pushButton_clicked();
+
 public:
     Profil();
     Profil(const Profil &profil);

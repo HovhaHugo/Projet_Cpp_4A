@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    string PathToJson = "C:/Users/benja/OneDrive/Bureau/test/test.json";
+    string PathToJson = "/Users/hugohovhannessian/Hugo/Etude_Sup/Polytech/DI4/S8/PlatLog_Cpp/test2.json";
 
     //globalUserManager.parseFile(PathToJson);      //on récupère les données du json et on les met dans une variable globale
     vector<User> vectorTest = globalUserManager.getListeUsers();

@@ -1,6 +1,7 @@
 #include "profil.h"
 #include "ui_profil.h"
 
+#include <QFileDialog>
 
 //CONSTRUCTEURS
 Profil::Profil() {}
@@ -84,3 +85,9 @@ void Profil::on_ShowSQLiteButton_clicked()
     sql.setModal(true);
     sql.exec();
 }
+
+void Profil::on_pushButton_clicked()
+{
+    QString name = QFileDialog::getOpenFileName(this,"Open a file",QDir::homePath());
+}
+

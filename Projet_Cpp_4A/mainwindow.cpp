@@ -33,7 +33,7 @@ void MainWindow::on_ButtonValider_clicked()
         //QMessageBox::information(this,"Login","Tout est bon");
         hide();
         User user = new User(nullptr);
-        user.setUser(test1.getLogin(), test1.getNom(), test1.getPrenom());
+        user.setUser(test1.getNom(), test1.getPrenom());
         user.setModal(true);
         user.exec();
     }else{
@@ -41,7 +41,7 @@ void MainWindow::on_ButtonValider_clicked()
             //QMessageBox::information(this,"Login","Tout est bon");
             hide();
             User user = new User(nullptr);
-            user.setUser(test2.getLogin(), test2.getNom(), test2.getPrenom());
+            user.setUser( test2.getNom(), test2.getPrenom());
             user.setModal(true);
             user.exec();
         }else{

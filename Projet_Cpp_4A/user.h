@@ -58,7 +58,7 @@ public:
     void addProfil(Profil newProfil) { profils.push_back(newProfil); }
     void delProfil(Profil supProfil);
 
-    void setUser(string login, string nom, string prenom);
+    void setUser(string nom, string prenom);
     bool verifyLogin(const string loginTest, const string mdpTest);
 
 
