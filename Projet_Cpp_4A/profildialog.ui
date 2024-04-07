@@ -32,8 +32,8 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>430</x>
-     <y>310</y>
+     <x>40</x>
+     <y>350</y>
      <width>93</width>
      <height>29</height>
     </rect>
@@ -45,8 +45,8 @@
   <widget class="QPushButton" name="BtnDelete">
    <property name="geometry">
     <rect>
-     <x>330</x>
-     <y>310</y>
+     <x>140</x>
+     <y>350</y>
      <width>93</width>
      <height>29</height>
     </rect>
@@ -68,14 +68,37 @@
   <widget class="QPushButton" name="ShowSQLiteButton">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>310</y>
+     <x>360</x>
+     <y>290</y>
      <width>141</width>
      <height>41</height>
     </rect>
    </property>
    <property name="text">
     <string>Afficher SQLite</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>280</y>
+     <width>171</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>BDD sélectionnée (path)</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="BDDSelectedLineEdit">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>300</y>
+     <width>311</width>
+     <height>26</height>
+    </rect>
    </property>
   </widget>
  </widget>

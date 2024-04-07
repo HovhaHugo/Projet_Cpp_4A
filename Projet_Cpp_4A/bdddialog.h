@@ -4,6 +4,8 @@
 #include <QDialog>
 #include "QStandardItemModel"
 
+using namespace std;
+
 namespace Ui {
 class BDDDialog;
 }
@@ -15,14 +17,19 @@ class BDDDialog : public QDialog
 private:
     Ui::BDDDialog *ui;
 
+    string pathBDD;
+
 private slots:
     void AffichageSQL();
+
     void on_listeTables_clicked();
     void on_SQLcommandButton_clicked();
 
 public:
     BDDDialog(QWidget *parent = nullptr);
     ~BDDDialog();
+
+    void setPath(string pathBDDSelected);
 };
 
 

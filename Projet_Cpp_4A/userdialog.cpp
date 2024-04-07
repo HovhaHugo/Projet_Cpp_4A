@@ -88,7 +88,7 @@ void UserDialog::on_DisconnectButton_clicked()
 
 void UserDialog::on_tableView_clicked(){
     QModelIndex selectedIndex = ui->tableView->currentIndex();
-    // On veut accéder à la première colonne de la ligne sélectionnée (le login):
+    // On veut acceder a la 1ere colonne de la ligne selectionnee (le login):
     QString selectedProfil = selectedIndex.sibling(selectedIndex.row(), 0).data().toString();
     ui->ProfilSelectedLineEdit->setText(selectedProfil);
 }
@@ -96,7 +96,7 @@ void UserDialog::on_tableView_clicked(){
 
 void UserDialog::on_ShowBDDButton_clicked()
 {
-    //Creation du vecteur comprenant tous les profils de l'utilisateur connecté
+    //On recherche le profil selectionne par l'utilisateur a partir de son login
     User Utilisateur = globalUserManager.searchUserByLogin(loginUser);
     vector<Profil> vecteurProfil = Utilisateur.getProfil();
     string loginProfilSelected = ui->ProfilSelectedLineEdit->text().toStdString();

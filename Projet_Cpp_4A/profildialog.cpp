@@ -35,26 +35,12 @@ void ProfilDialog::affichageBDDProfil(){
     //creation du vecteur comprenant toutes les BDD
     Profil profilSelected = globalUserManager.searchUserByLogin(loginUser).searchProfilByLogin(loginProfil);
     vector<BDD> vecteurBDD = profilSelected.getAcces();
-/*
-    BDD *db1 = new BDD(1, "bdd1", "C:/Users/benja/OneDrive/Bureau/test/test.SQLite");
-    BDD *db2 = new BDD(2, "bdd2", "C:/Users/benja/OneDrive/Bureau/test/test2.SQLite");
-    vector<BDD> vecteurBDD;
-    vecteurBDD.push_back(*db1);
-    vecteurBDD.push_back(*db2);
 
-    //Parcours par lignes dans un elements :
-    int row = 0;
-    while(row<2){
-        string id = to_string(vecteurBDD[row].getIdentifiant());
-        modele->setItem(row,0, new QStandardItem(QString::fromStdString(id)));
-        modele->setItem(row,1, new QStandardItem(QString::fromStdString(vecteurBDD[row].getLabel())));
-        row++;
-    }
-*/
     for(int row=0; row<int(vecteurBDD.size());row++){
         string id = to_string(vecteurBDD[row].getIdentifiant());
         modele->setItem(row,0, new QStandardItem(QString::fromStdString(id)));
         modele->setItem(row,1, new QStandardItem(QString::fromStdString(vecteurBDD[row].getLabel())));
+        modele->setItem(row,2, new QStandardItem(QString::fromStdString(vecteurBDD[row].getPath())));
     }
 
     //Labels des colonnes
@@ -64,9 +50,18 @@ void ProfilDialog::affichageBDDProfil(){
     ui->tableView->setModel(modele);
 }
 
+void ProfilDialog::on_tableView_clicked(){
+    QModelIndex selectedIndex = ui->tableView->currentIndex();
+    // On veut accéder à la 3eme colonne de la ligne selectionnee (le path vers la BDD):
+    QString selectedProfil = selectedIndex.sibling(selectedIndex.row(), 2).data().toString();
+    ui->BDDSelectedLineEdit->setText(selectedProfil);
+}
+
 void ProfilDialog::on_ShowSQLiteButton_clicked()
 {
+    string pathBDDSelected = ui->BDDSelectedLineEdit->text().toStdString();
     BDDDialog sql = new BDDDialog(nullptr);
+    sql.setPath(pathBDDSelected);
     sql.setModal(true);
     sql.exec();
 }

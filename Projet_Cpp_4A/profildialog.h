@@ -23,6 +23,7 @@ private:
 private slots:
     void affichageBDDProfil();
 
+    void on_tableView_clicked();
     void on_ShowSQLiteButton_clicked();
 
 public:
