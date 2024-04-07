@@ -1,4 +1,5 @@
 #include "userwindow.h"
+#include "profil.h"
 #include "ui_userwindow.h"
 #include "login.h"
 
@@ -99,9 +100,9 @@ void UserWindow::on_ShowBDDButton_clicked()
     vecteurProfil.push_back(*profil2);
 
     //int selection = ui->tableView->selectionModel()->selectedRows().first().row();
-    //Profil profilSelected = vecteurProfil[selection];
+    //ProfilDialog profilSelected = vecteurProfil[selection];
 
-    Profil profil = new Profil(nullptr);
+    ProfilDialog profil = new ProfilDialog(nullptr);
     profil.setModal(true);
     profil.exec();
 }

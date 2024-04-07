@@ -16,6 +16,7 @@ SOURCES += \
     mainregister.cpp \
     mainwindow.cpp \
     profil.cpp \
+    profildialog.cpp \
     sqlitewindow.cpp \
     user.cpp \
     usermanager.cpp \
@@ -29,6 +30,7 @@ HEADERS += \
     mainregister.h \
     mainwindow.h \
     profil.h \
+    profildialog.h \
     sqlitewindow.h \
     user.h \
     usermanager.h \
@@ -38,7 +40,7 @@ FORMS += \
     login.ui \
     mainregister.ui \
     mainwindow.ui \
-    profil.ui \
+    profildialog.ui \
     sqlitewindow.ui \
     userwindow.ui
 

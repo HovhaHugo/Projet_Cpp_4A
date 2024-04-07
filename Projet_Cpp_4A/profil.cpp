@@ -1,5 +1,4 @@
 #include "profil.h"
-#include "ui_profil.h"
 
 
 //CONSTRUCTEURS
@@ -11,14 +10,6 @@ Profil::Profil(const Profil &profil)
     this->label = profil.label;
     this->acces = profil.acces;
     this->actif = profil.actif;
-}
-
-Profil::Profil(QWidget *parent)
-    : QDialog(parent)
-    , ui(new Ui::Profil)
-{
-    ui->setupUi(this);
-    affichageBDDProfil();
 }
 
 Profil::Profil(const string newLogin,const string newLabel,const bool newStatus, const vector<BDD> newAcces) {
@@ -48,39 +39,4 @@ void Profil::delBDD(BDD supBDD){
         else iteration++;
     }
     //if(find) acces.erase(iteration);
-}
-
-//FONCTIONS QT
-
-void Profil::affichageBDDProfil(){
-    modele = new QStandardItemModel(0,2);
-
-    //creation du vecteur comprenant toutes les BDD
-    BDD *db1 = new BDD(1, "bdd1", "C:/Users/benja/OneDrive/Bureau/test/test.SQLite");
-    BDD *db2 = new BDD(2, "bdd2", "C:/Users/benja/OneDrive/Bureau/test/test2.SQLite");
-    vector<BDD> vecteurBDD;
-    vecteurBDD.push_back(*db1);
-    vecteurBDD.push_back(*db2);
-
-    //Parcours par lignes dans un elements :
-    int row = 0;
-    while(row<2){
-        string id = to_string(vecteurBDD[row].getIdentifiant());
-        modele->setItem(row,0, new QStandardItem(QString::fromStdString(id)));
-        modele->setItem(row,1, new QStandardItem(QString::fromStdString(vecteurBDD[row].getLabel())));
-        row++;
-    }
-
-    //Labels des colonnes
-    modele->setHeaderData(0,Qt::Horizontal,"Identifiant");
-    modele->setHeaderData(1,Qt::Horizontal,"Label");
-
-    ui->tableView->setModel(modele);
-}
-
-void Profil::on_ShowSQLiteButton_clicked()
-{
-    class SQLiteWindow sql;
-    sql.setModal(true);
-    sql.exec();
 }

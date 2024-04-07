@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include "QStandardItemModel"
-#include "profil.h"
+#include "profildialog.h"
 
 using namespace std;
 
