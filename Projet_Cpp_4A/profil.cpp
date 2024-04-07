@@ -88,6 +88,16 @@ void Profil::on_ShowSQLiteButton_clicked()
 
 void Profil::on_pushButton_clicked()
 {
-    QString name = QFileDialog::getOpenFileName(this,"Open a file",QDir::homePath());
+    //Permet de créer un QFileDialog qui va récupérer le fichier séléctionner par l'utilisateur.
+    QString name = QFileDialog::getOpenFileName(this,"Open a file",QDir::homePath(),tr("Base de données (*.db *.SQLite)"));
+
+    QFileInfo fileInfo(name);
+    QString fileName = fileInfo.fileName();
+
+    modele->setItem(2,0, new QStandardItem(QString::fromStdString("3")));
+    modele->setItem(2,1, new QStandardItem(fileName));
+    BDD *newAccess = new BDD(2,fileName.toStdString(),name.toStdString());
+    this->addBDD(*newAccess);
+
 }
 
