@@ -3,6 +3,7 @@
 #include "profildialog.h"
 #include "ui_profildialog.h"
 #include "bdddialog.h"
+#include <QFileDialog>
 
 
 //CONSTRUCTEURS
@@ -65,3 +66,18 @@ void ProfilDialog::on_ShowSQLiteButton_clicked()
     sql.setModal(true);
     sql.exec();
 }
+
+void ProfilDialog::on_pushButton_clicked()
+{
+    //Permet de créer un QFileDialog qui va récupérer le fichier séléctionner par l'utilisateur.
+    QString name = QFileDialog::getOpenFileName(this,"Open a file",QDir::homePath(),tr("Base de données (*.db *.SQLite)"));
+
+    QFileInfo fileInfo(name);
+    QString fileName = fileInfo.fileName();
+
+    modele->setItem(2,0, new QStandardItem(QString::fromStdString("3")));
+    modele->setItem(2,1, new QStandardItem(fileName));
+    BDD *newAccess = new BDD(2,fileName.toStdString(),name.toStdString());
+    globalUserManager.searchUserByLogin(loginUser).searchProfilByLogin(loginProfil).addBDD(*newAccess);
+}
+

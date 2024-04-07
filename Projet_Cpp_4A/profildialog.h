@@ -26,6 +26,8 @@ private slots:
     void on_tableView_clicked();
     void on_ShowSQLiteButton_clicked();
 
+    void on_pushButton_clicked();
+
 public:
     ProfilDialog();
     ProfilDialog(QWidget *parent = nullptr);

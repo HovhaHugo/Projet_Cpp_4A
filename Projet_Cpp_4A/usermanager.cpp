@@ -1,8 +1,14 @@
 #include "usermanager.h"
+#include "QtCore/qfile.h"
+#include "QtCore/qstring.h"
+#include <iostream>
 #include <json.hpp>
 #include <fstream>
-#include <iostream>
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QJsonObject>
 
+using namespace std;
 
 UserManager::UserManager() {}
 
@@ -14,8 +20,98 @@ UserManager::~UserManager() {}
  * @param pathFichier
  * string comprenant le path du fichier de sauvegarde
  */
-
 void UserManager::parseFile(string pathFichier){
+
+    QString fichier = QString::fromStdString(pathFichier);
+    QFile fichierJSON(fichier);
+    if (fichierJSON.open(QFile::ReadOnly | QFile::Text))
+    {
+        // lecture les données du fichier JSON
+        QString donnees = fichierJSON.readAll();
+
+        // création d'un document JSON
+        QJsonDocument documentJSON = QJsonDocument::fromJson(donnees.toUtf8());
+
+        QJsonObject objetJSON = documentJSON.object();
+
+        QStringList listeCles;
+        listeCles = objetJSON.keys();
+
+        // Les valeurs
+        for(int i = 0; i <= listeCles.count()-1; i++)
+        {
+            QJsonValue valeur = objetJSON[listeCles.at(i)]; // un QJsonValue
+
+            //Si c'est un Array, c'est un tableau, donc notre liste d'utilisateur.
+            if(valeur.isArray())
+            {
+
+                //qDebug() << QString("[tableau]");
+                QJsonArray tableau = valeur.toArray();
+
+                for(int j = 0; j < tableau.size(); j++){
+                    //qDebug() << tableau[j];
+                    //Comme c'est un tableau d'objet il faut le transformer
+                    QJsonObject user = tableau[j].toObject();
+
+
+                    //qDebug() << user[listeCle.at(w)]; // un QJsonValue
+                    //On récupére les informations pour l'utilisateur.
+                    string login = user["login"].toString().toStdString();
+                    string nom = user["nom"].toString().toStdString();
+                    string prenom = user["prenom"].toString().toStdString();
+                    string mdp = user["mdp"].toString().toStdString();
+                    int admin = user["admin"].toInt();
+
+                    vector<Profil> profils;
+
+                    QJsonArray tableauProfils = user["profils"].toArray();
+                    for(int prof = 0; prof < tableauProfils.size(); prof++){
+                        //qDebug() << profils[prof];
+
+                        QJsonObject objetProfils = tableauProfils[prof].toObject();
+
+                        string login = objetProfils["login"].toString().toStdString();
+                        string label = objetProfils["label"].toString().toStdString();
+                        int actif = objetProfils["actif"].toInt();
+                        int nbBDD = objetProfils["nbBDD"].toInt();
+                        QStringList liste;
+                        liste = objetProfils.keys();
+                        vector<BDD> acces;
+                        //Si c'est un array, c'est que c
+                        if(nbBDD>0){
+                            QJsonArray Bdd = objetProfils["BDD"].toArray();
+                            for(int database = 0; database < Bdd.size(); database++){
+                                QJsonObject objetBDD = Bdd[database].toObject();
+
+                                string label = objetBDD["label"].toString().toStdString();
+                                string path = objetBDD["path"].toString().toStdString();
+                                int identifiant = objetBDD["identifiant"].toInt();
+                                acces.push_back(BDD(identifiant, label, path));
+                            }
+                        }
+                        profils.push_back(Profil(login, label, actif, acces));
+                    }
+                    User newUser =  User(login, mdp, nom, prenom, admin, profils);
+                    listeUsers.push_back(newUser);
+                    cout << "Login: " << login << endl;
+                    cout << "Mdp: " << mdp << endl;
+                    cout << "Nom: " << nom << endl;
+                    cout << "Prenom: " << prenom << endl;
+                }
+            }
+            //Si c'est un double, c'est un chiffre, donc le nombre d'utilisateur qu'on as dans le fichier.
+            else if(valeur.isDouble())
+            {
+                //qDebug() << QString("[valeur]");
+            }
+        }
+        //cout<<donnees.toStdString();
+    }
+
+}
+
+/*void UserManager::parseFile(string pathFichier){
     using json = nlohmann::json;
     ifstream fichier(pathFichier);
     json data = json::parse(fichier);
@@ -67,26 +163,6 @@ void UserManager::parseFile(string pathFichier){
         cout << "Nom: " << nom << endl;
         cout << "Prenom: " << prenom << endl;
     }
-}
-//Fait une erreur lorsqu'il a déjà été compilé, et empêche le débugage.
-//Alternative:
-/*
-void UserManager::parseFile(string pathFichier){
-    BDD db1 = BDD(1,"db1","C:/Users/benja/OneDrive/Bureau/test/test.SQLite");
-    BDD db2 = BDD(2,"db2","C:/Users/benja/OneDrive/Bureau/test/test.SQLite");
-    vector<BDD> vectorBDD;
-    vectorBDD.push_back(db1);
-    vectorBDD.push_back(db2);
-    Profil JDo = Profil("JDo", "Do", 1, vectorBDD);
-    Profil JSmith = Profil("JSmith", "Smith", 0, vectorBDD);
-    vector<Profil> vectorJdo;
-    vectorJdo.push_back(JDo);
-    vector<Profil> vectorDouble;
-    vectorDouble.push_back(JSmith);
-    User Benjo = User("bhumbert", "benjooo", "humbert", "benjamin", 0, vectorJdo);
-    User Hugo = User("hhovha", "hugooo", "hovha", "hugo", 1, vectorDouble);
-    listeUsers.push_back(Hugo);
-    listeUsers.push_back(Benjo);
 }*/
 
 /**
