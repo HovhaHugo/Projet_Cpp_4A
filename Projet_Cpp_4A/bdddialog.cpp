@@ -10,19 +10,28 @@
 
 using namespace std;
 
+//CONSTRUCTEUR
 
 BDDDialog::BDDDialog(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::BDDDialog)
 {
     ui->setupUi(this);
-
-    AffichageSQL();
 }
+
+//DESTRUCTEUR
 
 BDDDialog::~BDDDialog()
 {
     delete ui;
+}
+
+//FONCTIONS QT
+
+void BDDDialog::setPath(string pathBDDSelected){
+    pathBDD = pathBDDSelected;
+
+    AffichageSQL();
 }
 
 /**
@@ -31,7 +40,7 @@ BDDDialog::~BDDDialog()
  */
 void BDDDialog::AffichageSQL(){
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:/Users/benja/OneDrive/Bureau/test/test.SQLite");
+    db.setDatabaseName(QString::fromStdString(pathBDD));
     if (!db.open()) {
         QMessageBox::warning(this,"BDD","Erreur: Impossible d'ouvrir la base de données");
         return;
