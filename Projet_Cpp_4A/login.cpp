@@ -4,6 +4,7 @@
 #include "ui_login.h"
 #include <QMessageBox>
 #include "user.h"
+#include "userwindow.h"
 
 login::login(QWidget *parent): QDialog(parent), ui(new Ui::login)
 {
@@ -37,32 +38,36 @@ void login::on_ButtonValider_clicked()
         if (idLine.toStdString() == test1.getLogin() && mdpLine.toStdString() == test1.getMdp()){
             Connexion = true;
             hide();
-            User user = new User(nullptr);
-            user.setUser( test1.getNom(), test1.getPrenom());
-            user.setModal(true);
-            user.exec();
+            UserWindow userwindow = new UserWindow(nullptr);
+            userwindow.setUser(test1.getNom(), test1.getPrenom());
+            userwindow.setModal(true);
+            userwindow.exec();
         }else{
             if (idLine.toStdString() == test2.getLogin() && mdpLine.toStdString() == test2.getMdp()){
                 Connexion = true;
                 hide();
-                User user = new User(nullptr);
-                user.setUser( test2.getNom(), test2.getPrenom());
-                user.setModal(true);
-                user.exec();
+                UserWindow userwindow = new UserWindow(nullptr);
+                userwindow.setUser( test2.getNom(), test2.getPrenom());
+                userwindow.setModal(true);
+                userwindow.exec();
             }
         }
         if(Connexion == false) QMessageBox::warning(this,"Login","Le login n'est pas bon !");
 
-    /*
+    //On verifie que le mdp et le login soit correct
+
+    /*vector<User> listeUsers = globalUserManager.getListeUsers();    //la liste des Users tirées du json
+
     for(int ItUser=0; ItUser<listeUsers.size(); ItUser++){
         if (idLine.toStdString() == listeUsers[ItUser].getLogin() && mdpLine.toStdString() == listeUsers[ItUser].getMdp()){
             Connexion = true;
             hide();
-            User user = new User(nullptr);
-            user.setUser(listeUsers[ItUser].getLogin(), listeUsers[ItUser].getNom(), listeUsers[ItUser].getPrenom());
+            UserWindow user = new UserWindow(nullptr);
+            user.setUser(listeUsers[ItUser].getNom(), listeUsers[ItUser].getPrenom());
             user.setModal(true);
             user.exec();
         }
+
     }*/
 }
 

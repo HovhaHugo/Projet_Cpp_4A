@@ -18,7 +18,8 @@ SOURCES += \
     profil.cpp \
     sqlitewindow.cpp \
     user.cpp \
-    usermanager.cpp
+    usermanager.cpp \
+    userwindow.cpp
 
 HEADERS += \
     bdd.h \
@@ -30,7 +31,8 @@ HEADERS += \
     profil.h \
     sqlitewindow.h \
     user.h \
-    usermanager.h
+    usermanager.h \
+    userwindow.h
 
 FORMS += \
     login.ui \
@@ -38,7 +40,7 @@ FORMS += \
     mainwindow.ui \
     profil.ui \
     sqlitewindow.ui \
-    user.ui
+    userwindow.ui
 
 TRANSLATIONS += \
     Projet_Platlog_Cpp_fr_FR.ts

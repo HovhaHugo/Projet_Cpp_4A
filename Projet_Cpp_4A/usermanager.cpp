@@ -14,7 +14,7 @@ UserManager::~UserManager() {}
  * @param pathFichier
  * string comprenant le path du fichier de sauvegarde
  */
-/*
+
 void UserManager::parseFile(string pathFichier){
     using json = nlohmann::json;
     ifstream fichier(pathFichier);
@@ -56,8 +56,8 @@ void UserManager::parseFile(string pathFichier){
             //insertion du Profil dans la liste du User en cours
             profils.push_back(Profil(login, label, actif, acces));
         }
-        //insertion du User dans listeUsers pour les stocker
-        User newUser = new User("login", mdp, nom, prenom, admin, profils);
+        //insertion du UserWindow dans listeUsers pour les stocker
+        User newUser =  User(login, mdp, nom, prenom, admin, profils);
         listeUsers.push_back(newUser);
 
         // Print the values
@@ -67,9 +67,10 @@ void UserManager::parseFile(string pathFichier){
         cout << "Nom: " << nom << endl;
         cout << "Prenom: " << prenom << endl;
     }
-}*/
+}
 //Fait une erreur lorsqu'il a déjà été compilé, et empêche le débugage.
 //Alternative:
+/*
 void UserManager::parseFile(string pathFichier){
     BDD db1 = BDD(1,"db1","C:/Users/benja/OneDrive/Bureau/test/test.SQLite");
     BDD db2 = BDD(2,"db2","C:/Users/benja/OneDrive/Bureau/test/test.SQLite");
@@ -86,7 +87,7 @@ void UserManager::parseFile(string pathFichier){
     User Hugo = User("hhovha", "hugooo", "hovha", "hugo", 1, vectorDouble);
     listeUsers.push_back(Hugo);
     listeUsers.push_back(Benjo);
-}
+}*/
 
 /**
  * @brief UserManager::JsonHaveAdmin
@@ -150,7 +151,7 @@ int UserManager::searchLogin(const string loginTest, const string mdpTest) {
  * @brief UserManager::searchAdmin
  * Recherche s'il existe un User possédant le droit d'admin
  * @return
- * l'objet User s'il est admin, NULL si aucun admin n'est trouvé
+ * l'objet User s'il est admin, un User vide si aucun admin n'est trouvé
  */
 User UserManager::searchAdmin() {
     for(int i=0; i<int(listeUsers.size()); i++){
@@ -158,5 +159,5 @@ User UserManager::searchAdmin() {
             return listeUsers[i];
         }
     }
-    return NULL;
+    return User();
 }

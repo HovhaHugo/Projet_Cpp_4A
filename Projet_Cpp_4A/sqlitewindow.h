@@ -18,6 +18,7 @@ private:
 private slots:
     void AffichageSQL();
     void on_listeTables_clicked();
+    void on_SQLcommandButton_clicked();
 
 public:
     SQLiteWindow(QWidget *parent = nullptr);
