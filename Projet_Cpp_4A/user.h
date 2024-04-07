@@ -1,41 +1,22 @@
-#ifndef USERS_H
-#define USERS_H
+#ifndef USER_H
+#define USER_H
 
-#include <QDialog>
-#include "QStandardItemModel"
 #include "profil.h"
 
 using namespace std;
 
-
-namespace Ui {
-class User;
-}
-
-class User :public QDialog
+class User
 {
-    Q_OBJECT
-
 private:
-        Ui::User *ui;
-        QStandardItemModel *modele;
-
-        string login;
-        string mdp;
-        string nom;
-        string prenom;
-        bool admin;
-        vector<Profil> profils;
-
-private slots:
-    void affichageProfilsUser();
-
-    void on_DisconnectButton_clicked();
-    void on_ShowBDDButton_clicked();
+    string login;
+    string mdp;
+    string nom;
+    string prenom;
+    bool admin;
+    vector<Profil> profils;
 
 public:
     User();
-    User(QWidget *parent = nullptr);
     User(const User &user);
     User(const string login, const string mdp, const string nom, const string prenom, const bool admin, const vector<Profil> profils);
     ~User();
@@ -58,10 +39,7 @@ public:
     void addProfil(Profil newProfil) { profils.push_back(newProfil); }
     void delProfil(Profil supProfil);
 
-    void setUser(string login, string nom, string prenom);
     bool verifyLogin(const string loginTest, const string mdpTest);
-
-
 };
 
-#endif // M_USERS_H
+#endif // USER_H

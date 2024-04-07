@@ -56,8 +56,8 @@ void UserManager::parseFile(string pathFichier){
             //insertion du Profil dans la liste du User en cours
             profils.push_back(Profil(login, label, actif, acces));
         }
-        //insertion du User dans listeUsers pour les stocker
-        User newUser = new User("login", mdp, nom, prenom, admin, profils);
+        //insertion du UserWindow dans listeUsers pour les stocker
+        User newUser =  User(login, mdp, nom, prenom, admin, profils);
         listeUsers.push_back(newUser);
 
         // Print the values
@@ -151,7 +151,7 @@ int UserManager::searchLogin(const string loginTest, const string mdpTest) {
  * @brief UserManager::searchAdmin
  * Recherche s'il existe un User possédant le droit d'admin
  * @return
- * l'objet User s'il est admin, NULL si aucun admin n'est trouvé
+ * l'objet User s'il est admin, un User vide si aucun admin n'est trouvé
  */
 User UserManager::searchAdmin() {
     for(int i=0; i<int(listeUsers.size()); i++){
@@ -159,5 +159,5 @@ User UserManager::searchAdmin() {
             return listeUsers[i];
         }
     }
-    return NULL;
+    return User();
 }

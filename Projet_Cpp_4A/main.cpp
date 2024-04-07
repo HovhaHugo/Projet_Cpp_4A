@@ -7,7 +7,7 @@
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
-#include <iostream>
+//#include <iostream>
 
 int main(int argc, char *argv[])
 {
@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 
     string PathToJson = "C:/Users/benja/OneDrive/Bureau/test/test.json";
 
-    //globalUserManager.parseFile(PathToJson);      //on récupère les données du json et on les met dans une variable globale
+    globalUserManager.parseFile(PathToJson);      //on récupère les données du json et on les met dans une variable globale
     vector<User> vectorTest = globalUserManager.getListeUsers();
     bool haveAdmin = globalUserManager.JsonHaveAdmin(PathToJson);
 
