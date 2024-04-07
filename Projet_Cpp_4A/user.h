@@ -40,6 +40,7 @@ public:
     void delProfil(Profil supProfil);
 
     bool verifyLogin(const string loginTest, const string mdpTest);
+    Profil searchProfilByLogin(const string loginTest);
 };
 
 #endif // USER_H

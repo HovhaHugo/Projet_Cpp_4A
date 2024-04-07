@@ -1,37 +1,38 @@
 #include "globals.h"
 
-#include "userwindow.h"
+#include "userdialog.h"
 #include "profil.h"
-#include "ui_userwindow.h"
+#include "profildialog.h"
+#include "ui_userdialog.h"
 #include "login.h"
 
 //CONSTRUCTEURS
-UserWindow::UserWindow() {}
+UserDialog::UserDialog() {}
 
-UserWindow::UserWindow(QWidget *parent)
+UserDialog::UserDialog(QWidget *parent)
     : QDialog(parent)
-    , ui(new Ui::UserWindow)
+    , ui(new Ui::UserDialog)
 {
     ui->setupUi(this);
 }
 
 
 //DESTRUCTEUR
-UserWindow::~UserWindow(){
+UserDialog::~UserDialog(){
     delete ui;
 }
 
 //AUTRES FONCTIONS
 
 /**
- * @brief UserWindow::setUser
+ * @brief UserDialog::setUser
  * Permet de sauvegarder le nom et prenom de l'utilisateur actuellement connecter.
  * @param nom
  * Le nom de l'utilisateur actuelle
  * @param prenom
  * Le prenom de l'utilisateur actuelle
  */
-void UserWindow::setUser(string login, string nom, string prenom){
+void UserDialog::setUser(string login, string nom, string prenom){
     loginUser = login; //on enregistre le login de l'utilisateur actuellement connecté
 
     QString nomQT = QString::fromStdString(nom);
@@ -46,29 +47,16 @@ void UserWindow::setUser(string login, string nom, string prenom){
 //FONCTIONS QT
 
 /**
- * @brief UserWindow::affichageProfilsUser
+ * @brief UserDialog::affichageProfilsUser
  * Permet d'ajouter des donnéer dans le tableau pour afficher les profils.
  */
-void UserWindow::affichageProfilsUser(){
+void UserDialog::affichageProfilsUser(){
     modele = new QStandardItemModel(0,3);
 
-    //Creation du vecteur comprenant tous les profils
+    //Creation du vecteur comprenant tous les profils de l'utilisateur connecté
     User Utilisateur = globalUserManager.searchUserByLogin(loginUser);
-
     vector<Profil> vecteurProfil = Utilisateur.getProfil();
 
-    //Parcours par lignes dans un elements :
-    /*int row = 0;
-    while(row<2){
-        modele->setItem(row,0, new QStandardItem(QString::fromStdString(vecteurProfil[row].getLogin())));
-        modele->setItem(row,1, new QStandardItem(QString::fromStdString(vecteurProfil[row].getLabel())));
-        if(profil1->getActif() == 1){
-            modele->setItem(row,2, new QStandardItem("Actif"));
-        }else{
-            modele->setItem(row,2, new QStandardItem(""));
-        }
-        row++;
-    }*/
     for(int row=0; row<int(vecteurProfil.size());row++){
         modele->setItem(row,0, new QStandardItem(QString::fromStdString(vecteurProfil[row].getLogin())));
         modele->setItem(row,1, new QStandardItem(QString::fromStdString(vecteurProfil[row].getLabel())));
@@ -88,30 +76,35 @@ void UserWindow::affichageProfilsUser(){
 }
 
 /**
- * @brief UserWindow::on_DisconnectButton_clicked
+ * @brief UserDialog::on_DisconnectButton_clicked
  * fonction associee au bouton pour deconnecter le user de l'application
  */
-void UserWindow::on_DisconnectButton_clicked()
+void UserDialog::on_DisconnectButton_clicked()
 {
     class login login;
     login.setModal(true);
     login.exec();
 }
 
+void UserDialog::on_tableView_clicked(){
+    QModelIndex selectedIndex = ui->tableView->currentIndex();
+    // On veut accéder à la première colonne de la ligne sélectionnée (le login):
+    QString selectedProfil = selectedIndex.sibling(selectedIndex.row(), 0).data().toString();
+    ui->ProfilSelectedLineEdit->setText(selectedProfil);
+}
 
-void UserWindow::on_ShowBDDButton_clicked()
+
+void UserDialog::on_ShowBDDButton_clicked()
 {
-    vector<BDD> acces;
-    Profil *profil1 = new Profil("JDo", "Do", 1, acces);
-    Profil *profil2 = new Profil("JSmith", "Smith", 0, acces);
-    vector<Profil> vecteurProfil;
-    vecteurProfil.push_back(*profil1);
-    vecteurProfil.push_back(*profil2);
+    //Creation du vecteur comprenant tous les profils de l'utilisateur connecté
+    User Utilisateur = globalUserManager.searchUserByLogin(loginUser);
+    vector<Profil> vecteurProfil = Utilisateur.getProfil();
+    string loginProfilSelected = ui->ProfilSelectedLineEdit->text().toStdString();
+    Profil profilSelected = Utilisateur.searchProfilByLogin(loginProfilSelected);
 
-    //int selection = ui->tableView->selectionModel()->selectedRows().first().row();
-    //ProfilDialog profilSelected = vecteurProfil[selection];
 
     ProfilDialog profil = new ProfilDialog(nullptr);
+    profil.setProfil(loginUser ,loginProfilSelected); //on transmet le login de l'utilisateur connecté et du profil utilisé
     profil.setModal(true);
     profil.exec();
 }

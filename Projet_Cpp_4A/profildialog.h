@@ -17,6 +17,9 @@ private:
     Ui::ProfilDialog *ui;
     QStandardItemModel *modele;
 
+    string loginUser;
+    string loginProfil;
+
 private slots:
     void affichageBDDProfil();
 
@@ -27,7 +30,7 @@ public:
     ProfilDialog(QWidget *parent = nullptr);
     ~ProfilDialog();
 
-    void setProfil(string login, string label);
+    void setProfil(string loginUserSelect, string loginProfilSelect);
 };
 
 #endif // PROFILDIALOG_H

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>UserWindow</class>
- <widget class="QDialog" name="UserWindow">
+ <class>UserDialog</class>
+ <widget class="QDialog" name="UserDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -94,14 +94,37 @@
   <widget class="QPushButton" name="ShowBDDButton">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>350</y>
+     <x>380</x>
+     <y>290</y>
      <width>111</width>
-     <height>29</height>
+     <height>51</height>
     </rect>
    </property>
    <property name="text">
     <string>Afficher BDD</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="ProfilSelectLabel">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>290</y>
+     <width>131</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Profil sélectionné:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="ProfilSelectedLineEdit">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>310</y>
+     <width>351</width>
+     <height>26</height>
+    </rect>
    </property>
   </widget>
  </widget>
@@ -110,7 +133,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>UserWindow</receiver>
+   <receiver>UserDialog</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -126,7 +149,7 @@
   <connection>
    <sender>DisconnectButton</sender>
    <signal>clicked()</signal>
-   <receiver>UserWindow</receiver>
+   <receiver>UserDialog</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SQLiteWindow</class>
- <widget class="QDialog" name="SQLiteWindow">
+ <class>BDDDialog</class>
+ <widget class="QDialog" name="BDDDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -101,7 +101,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>SQLiteWindow</receiver>
+   <receiver>BDDDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -117,7 +117,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>SQLiteWindow</receiver>
+   <receiver>BDDDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

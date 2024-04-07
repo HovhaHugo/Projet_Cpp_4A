@@ -4,7 +4,7 @@
 #include "ui_login.h"
 #include <QMessageBox>
 #include "user.h"
-#include "userwindow.h"
+#include "userdialog.h"
 
 login::login(QWidget *parent): QDialog(parent), ui(new Ui::login)
 {
@@ -34,7 +34,7 @@ void login::on_ButtonValider_clicked()
         if (idLine.toStdString() == listeUsers[ItUser].getLogin() && mdpLine.toStdString() == listeUsers[ItUser].getMdp()){
             Connexion = true;
             hide();
-            UserWindow userWindow = new UserWindow(nullptr);
+            UserDialog userWindow = new UserDialog(nullptr);
             userWindow.setUser(listeUsers[ItUser].getLogin(), listeUsers[ItUser].getNom(), listeUsers[ItUser].getPrenom());
             userWindow.setModal(true);
             userWindow.exec();

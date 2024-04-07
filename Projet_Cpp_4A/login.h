@@ -2,7 +2,7 @@
 #define LOGIN_H
 
 #include <QDialog>
-#include "userwindow.h"
+#include "userdialog.h"
 
 namespace Ui {
 class login;
@@ -21,7 +21,7 @@ private slots:
 
 private:
     Ui::login *ui;
-    UserWindow *user;
+    UserDialog *user;
 
 };
 

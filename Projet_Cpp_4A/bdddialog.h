@@ -1,19 +1,19 @@
-#ifndef SQLITEWINDOW_H
-#define SQLITEWINDOW_H
+#ifndef BDDDIALOG_H
+#define BDDDIALOG_H
 
 #include <QDialog>
 #include "QStandardItemModel"
 
 namespace Ui {
-class SQLiteWindow;
+class BDDDialog;
 }
 
-class SQLiteWindow : public QDialog
+class BDDDialog : public QDialog
 {
     Q_OBJECT
 
 private:
-    Ui::SQLiteWindow *ui;
+    Ui::BDDDialog *ui;
 
 private slots:
     void AffichageSQL();
@@ -21,9 +21,9 @@ private slots:
     void on_SQLcommandButton_clicked();
 
 public:
-    SQLiteWindow(QWidget *parent = nullptr);
-    ~SQLiteWindow();
+    BDDDialog(QWidget *parent = nullptr);
+    ~BDDDialog();
 };
 
 
-#endif // SQLITEWINDOW_H
+#endif // BDDDIALOG_H
