@@ -13,6 +13,7 @@ private:
     bool actif;
     vector<BDD> acces;
 
+
 public:
     Profil();
     Profil(const Profil &profil);

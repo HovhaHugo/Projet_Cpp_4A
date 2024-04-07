@@ -57,3 +57,4 @@ bool User::verifyLogin(const string loginTest, const string mdpTest){
         return true;
     else return false;
 }
+

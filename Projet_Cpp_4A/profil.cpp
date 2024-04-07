@@ -1,5 +1,6 @@
 #include "profil.h"
 
+#include <QFileDialog>
 
 //CONSTRUCTEURS
 Profil::Profil() {}
