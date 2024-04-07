@@ -1,3 +1,5 @@
+#include "globals.h"
+
 #include "userwindow.h"
 #include "profil.h"
 #include "ui_userwindow.h"
@@ -11,7 +13,6 @@ UserWindow::UserWindow(QWidget *parent)
     , ui(new Ui::UserWindow)
 {
     ui->setupUi(this);
-    affichageProfilsUser();
 }
 
 
@@ -30,7 +31,8 @@ UserWindow::~UserWindow(){
  * @param prenom
  * Le prenom de l'utilisateur actuelle
  */
-void UserWindow::setUser(string nom, string prenom){
+void UserWindow::setUser(string login, string nom, string prenom){
+    loginUser = login; //on enregistre le login de l'utilisateur actuellement connecté
 
     QString nomQT = QString::fromStdString(nom);
     QString prenomQT = QString::fromStdString(prenom);
@@ -38,6 +40,7 @@ void UserWindow::setUser(string nom, string prenom){
     ui->NomLabel->setText(nomQT);
     ui->PrenomLabel->setText(prenomQT);
 
+    affichageProfilsUser();
 }
 
 //FONCTIONS QT
@@ -50,15 +53,12 @@ void UserWindow::affichageProfilsUser(){
     modele = new QStandardItemModel(0,3);
 
     //Creation du vecteur comprenant tous les profils
-    vector<BDD> acces;
-    Profil *profil1 = new Profil("JDo", "Do", 1, acces);
-    Profil *profil2 = new Profil("JSmith", "Smith", 0, acces);
-    vector<Profil> vecteurProfil;
-    vecteurProfil.push_back(*profil1);
-    vecteurProfil.push_back(*profil2);
+    User Utilisateur = globalUserManager.searchUserByLogin(loginUser);
+
+    vector<Profil> vecteurProfil = Utilisateur.getProfil();
 
     //Parcours par lignes dans un elements :
-    int row = 0;
+    /*int row = 0;
     while(row<2){
         modele->setItem(row,0, new QStandardItem(QString::fromStdString(vecteurProfil[row].getLogin())));
         modele->setItem(row,1, new QStandardItem(QString::fromStdString(vecteurProfil[row].getLabel())));
@@ -68,6 +68,15 @@ void UserWindow::affichageProfilsUser(){
             modele->setItem(row,2, new QStandardItem(""));
         }
         row++;
+    }*/
+    for(int row=0; row<int(vecteurProfil.size());row++){
+        modele->setItem(row,0, new QStandardItem(QString::fromStdString(vecteurProfil[row].getLogin())));
+        modele->setItem(row,1, new QStandardItem(QString::fromStdString(vecteurProfil[row].getLabel())));
+        if(vecteurProfil[row].getActif() == 1){
+            modele->setItem(row,2, new QStandardItem("Actif"));
+        }else{
+            modele->setItem(row,2, new QStandardItem(""));
+        }
     }
 
     //Labels des colonnes

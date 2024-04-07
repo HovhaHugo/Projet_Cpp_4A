@@ -18,7 +18,9 @@ class UserWindow :public QDialog
 
 private:
     Ui::UserWindow *ui;
-        QStandardItemModel *modele;
+    QStandardItemModel *modele;
+
+    string loginUser;
 
 private slots:
     void affichageProfilsUser();
@@ -31,7 +33,7 @@ public:
     UserWindow(QWidget *parent = nullptr);
     ~UserWindow();
 
-    void setUser(string nom, string prenom);
+    void setUser(string login, string nom, string prenom);
 
 };
 

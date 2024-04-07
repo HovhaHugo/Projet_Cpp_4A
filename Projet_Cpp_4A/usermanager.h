@@ -22,7 +22,7 @@ public:
     //void setListeUsers(const vector<User> newListeUsers) {listeUsers = newListeUsers;}
 
     int searchLogin(const string loginTest, const string mdpTest);
-    User searchUser(const int Iteration){return listeUsers[Iteration];}
+    User searchUserByLogin(const string loginTest);
     User searchAdmin();
 };
 

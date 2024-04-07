@@ -30,14 +30,14 @@ void login::on_ButtonValider_clicked()
     bool Connexion = false;
     vector<User> listeUsers = globalUserManager.getListeUsers();    //la liste des Users tirées du json
 
-    for(int ItUser=0; ItUser<listeUsers.size(); ItUser++){
+    for(int ItUser=0; ItUser<int(listeUsers.size()); ItUser++){
         if (idLine.toStdString() == listeUsers[ItUser].getLogin() && mdpLine.toStdString() == listeUsers[ItUser].getMdp()){
             Connexion = true;
             hide();
-            UserWindow user = new UserWindow(nullptr);
-            user.setUser(listeUsers[ItUser].getNom(), listeUsers[ItUser].getPrenom());
-            user.setModal(true);
-            user.exec();
+            UserWindow userWindow = new UserWindow(nullptr);
+            userWindow.setUser(listeUsers[ItUser].getLogin(), listeUsers[ItUser].getNom(), listeUsers[ItUser].getPrenom());
+            userWindow.setModal(true);
+            userWindow.exec();
         }
     }
     if(Connexion == false) QMessageBox::warning(this,"Login","Le login n'est pas bon !");

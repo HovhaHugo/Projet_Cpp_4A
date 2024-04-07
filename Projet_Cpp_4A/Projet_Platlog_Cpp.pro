@@ -14,7 +14,6 @@ SOURCES += \
     login.cpp \
     main.cpp \
     mainregister.cpp \
-    mainwindow.cpp \
     profil.cpp \
     profildialog.cpp \
     sqlitewindow.cpp \
@@ -28,7 +27,6 @@ HEADERS += \
     json.hpp \
     login.h \
     mainregister.h \
-    mainwindow.h \
     profil.h \
     profildialog.h \
     sqlitewindow.h \
@@ -39,7 +37,6 @@ HEADERS += \
 FORMS += \
     login.ui \
     mainregister.ui \
-    mainwindow.ui \
     profildialog.ui \
     sqlitewindow.ui \
     userwindow.ui
