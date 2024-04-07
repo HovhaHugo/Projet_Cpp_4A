@@ -1,6 +1,6 @@
-#include "sqlitewindow.h"
+#include "bdddialog.h"
 #include "qtableview.h"
-#include "ui_sqlitewindow.h"
+#include "ui_bdddialog.h"
 
 #include <QSqlQueryModel>
 #include <QSqlQuery>
@@ -11,25 +11,25 @@
 using namespace std;
 
 
-SQLiteWindow::SQLiteWindow(QWidget *parent)
+BDDDialog::BDDDialog(QWidget *parent)
     : QDialog(parent)
-    , ui(new Ui::SQLiteWindow)
+    , ui(new Ui::BDDDialog)
 {
     ui->setupUi(this);
 
     AffichageSQL();
 }
 
-SQLiteWindow::~SQLiteWindow()
+BDDDialog::~BDDDialog()
 {
     delete ui;
 }
 
 /**
- * @brief SQLiteWindow::AffichageSQL
+ * @brief BDDDialog::AffichageSQL
  * Ouvre la base de données et affiche les différentes tables dans la QListView
  */
-void SQLiteWindow::AffichageSQL(){
+void BDDDialog::AffichageSQL(){
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("C:/Users/benja/OneDrive/Bureau/test/test.SQLite");
     if (!db.open()) {
@@ -50,10 +50,10 @@ void SQLiteWindow::AffichageSQL(){
 }
 
 /**
- * @brief SQLiteWindow::on_listeTables_clicked
+ * @brief BDDDialog::on_listeTables_clicked
  * Affiche dans la QTableViewle contenu de la table sélectionnée dans la QListView
  */
-void SQLiteWindow::on_listeTables_clicked(){
+void BDDDialog::on_listeTables_clicked(){
     QModelIndex selectedIndex = ui->listeTables->currentIndex();
     QString selectedTable = selectedIndex.data().toString();
 
@@ -63,7 +63,7 @@ void SQLiteWindow::on_listeTables_clicked(){
     ui->tableView->setModel(model);
 }
 
-void SQLiteWindow::on_SQLcommandButton_clicked(){
+void BDDDialog::on_SQLcommandButton_clicked(){
     QString SQLrequest = ui->SQLcommandLineEdit->text();
     QSqlQueryModel *model = new QSqlQueryModel;
     model->setQuery(SQLrequest);

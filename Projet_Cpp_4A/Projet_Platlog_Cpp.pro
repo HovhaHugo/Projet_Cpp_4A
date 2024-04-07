@@ -10,37 +10,36 @@ CONFIG += c++17
 
 SOURCES += \
     bdd.cpp \
+    bdddialog.cpp \
     globals.cpp \
     login.cpp \
     main.cpp \
     mainregister.cpp \
-    mainwindow.cpp \
     profil.cpp \
-    sqlitewindow.cpp \
+    profildialog.cpp \
     user.cpp \
-    usermanager.cpp \
-    userwindow.cpp
+    userdialog.cpp \
+    usermanager.cpp
 
 HEADERS += \
     bdd.h \
+    bdddialog.h \
     globals.h \
     json.hpp \
     login.h \
     mainregister.h \
-    mainwindow.h \
     profil.h \
-    sqlitewindow.h \
+    profildialog.h \
     user.h \
-    usermanager.h \
-    userwindow.h
+    userdialog.h \
+    usermanager.h
 
 FORMS += \
+    bdddialog.ui \
     login.ui \
     mainregister.ui \
-    mainwindow.ui \
-    profil.ui \
-    sqlitewindow.ui \
-    userwindow.ui
+    profildialog.ui \
+    userdialog.ui
 
 TRANSLATIONS += \
     Projet_Platlog_Cpp_fr_FR.ts

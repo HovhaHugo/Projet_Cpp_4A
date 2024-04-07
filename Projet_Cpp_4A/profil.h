@@ -1,39 +1,22 @@
 #ifndef PROFIL_H
 #define PROFIL_H
 
-#include <QDialog>
-#include "QStandardItemModel"
 #include "bdd.h"
-#include "sqlitewindow.h"
+#include <vector>
 
-namespace Ui {
-class Profil;
-}
-
-class Profil :public QDialog
+class Profil
 {
-    Q_OBJECT
-
 private:
-    Ui::Profil *ui;
-    QStandardItemModel *modele;
 
     string login;
     string label;
     bool actif;
     vector<BDD> acces;
 
-private slots:
-    void affichageBDDProfil();
-
-    void on_ShowSQLiteButton_clicked();
-
-    void on_pushButton_clicked();
 
 public:
     Profil();
     Profil(const Profil &profil);
-    Profil(QWidget *parent = nullptr);
     Profil(const string newLogin,const string newLabel,const bool newStatus, const vector<BDD> newAcces);
     ~Profil();
 
@@ -53,8 +36,6 @@ public:
     void setAcces(vector<BDD> newAcces) { acces = newAcces;}
     void addBDD(BDD newBDD) { acces.push_back(newBDD);}
     void delBDD(BDD delBDD);
-
-    void setProfil(string login, string label);
 };
 
 #endif // PROFIL_H

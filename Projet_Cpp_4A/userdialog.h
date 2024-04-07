@@ -3,35 +3,37 @@
 
 #include <QDialog>
 #include "QStandardItemModel"
-#include "profil.h"
 
 using namespace std;
 
 
 namespace Ui {
-class UserWindow;
+class UserDialog;
 }
 
-class UserWindow :public QDialog
+class UserDialog :public QDialog
 {
     Q_OBJECT
 
 private:
-    Ui::UserWindow *ui;
-        QStandardItemModel *modele;
+    Ui::UserDialog *ui;
+    QStandardItemModel *modele;
+
+    string loginUser;
 
 private slots:
     void affichageProfilsUser();
 
     void on_DisconnectButton_clicked();
+    void on_tableView_clicked();
     void on_ShowBDDButton_clicked();
 
 public:
-    UserWindow();
-    UserWindow(QWidget *parent = nullptr);
-    ~UserWindow();
+    UserDialog();
+    UserDialog(QWidget *parent = nullptr);
+    ~UserDialog();
 
-    void setUser(string nom, string prenom);
+    void setUser(string login, string nom, string prenom);
 
 };
 

@@ -58,3 +58,19 @@ bool User::verifyLogin(const string loginTest, const string mdpTest){
     else return false;
 }
 
+/**
+ * @brief User::searchProfilByLogin
+ * Recherche un Profil par son login
+ * @param loginTest
+ * un string contenant le login que l'on recherche
+ * @return
+ * l'objet Profil recherché si il y a correspondance, un Profil vide sinon
+ */
+Profil User::searchProfilByLogin(const string loginTest){
+    for(int i=0; i<int(profils.size()); i++){
+        if(profils[i].getLogin()==loginTest){
+            return profils[i];
+        }
+    }
+    return Profil();
+}

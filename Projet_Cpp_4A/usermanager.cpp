@@ -135,7 +135,7 @@ void UserManager::writeFile(const string pathFichier){
  * @param mdpTest
  * string comprenant le mot de passe a tester
  * @return
- * -1 si il n'y a pas de correspondance, l'emplacement de la correspondance dans la liste sinon
+ * -1 si il n'y a pas de correspondance, l'emplacement de l'a'utilisateur correspondant dans la liste sinon
  */
 int UserManager::searchLogin(const string loginTest, const string mdpTest) {
     int found = -1;
@@ -156,6 +156,23 @@ int UserManager::searchLogin(const string loginTest, const string mdpTest) {
 User UserManager::searchAdmin() {
     for(int i=0; i<int(listeUsers.size()); i++){
         if(listeUsers[i].isAdmin()){
+            return listeUsers[i];
+        }
+    }
+    return User();
+}
+
+/**
+ * @brief UserManager::searchUserByLogin
+ * Recherche un utilisateur par son login
+ * @param loginTest
+ * un string contenant le login que l'on recherche
+ * @return
+ * l'objet User recherché si il y a correspondance, un User vide sinon
+ */
+User UserManager::searchUserByLogin(const string loginTest){
+    for(int i=0; i<int(listeUsers.size()); i++){
+        if(listeUsers[i].getLogin()==loginTest){
             return listeUsers[i];
         }
     }
