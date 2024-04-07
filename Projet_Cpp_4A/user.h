@@ -21,9 +21,9 @@ private:
         QStandardItemModel *modele;
 
         string login;
+        string mdp;
         string nom;
         string prenom;
-        string mdp;
         bool admin;
         vector<Profil> profils;
 
@@ -31,28 +31,28 @@ private slots:
     void affichageProfilsUser();
 
     void on_DisconnectButton_clicked();
-    void on_testButton_clicked();
+    void on_ShowBDDButton_clicked();
 
 public:
     User();
     User(QWidget *parent = nullptr);
     User(const User &user);
-    User(const string login, const string nom, const string prenom, const string mdp, bool admin);
+    User(const string login, const string mdp, const string nom, const string prenom, const bool admin, const vector<Profil> profils);
     ~User();
 
     // Getters
     string getLogin() { return login; }
+    string getMdp() { return mdp; }
     string getNom() { return nom; }
     string getPrenom() { return prenom; }
-    string getMdp() { return mdp; }
     bool isAdmin() { return admin; }
     vector<Profil> getProfil() { return profils; }
 
     // Setters
     void setLogin(const string newLogin) { login = newLogin; }
+    void setMdp(const string newMdp) { mdp = newMdp; }
     void setNom(const string newNom) { nom = newNom; }
     void setPrenom(const string newPrenom) { prenom = newPrenom; }
-    void setMdp(const string newMdp) { mdp = newMdp; }
     void setAdmin(bool isAdmin) { admin = isAdmin; }
     void setProfil(vector<Profil> newProfils) { profils = newProfils;}
     void addProfil(Profil newProfil) { profils.push_back(newProfil); }

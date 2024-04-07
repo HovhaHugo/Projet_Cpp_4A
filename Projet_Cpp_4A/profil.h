@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "QStandardItemModel"
 #include "bdd.h"
+#include "sqlitewindow.h"
 
 namespace Ui {
 class Profil;
@@ -19,16 +20,19 @@ private:
 
     string login;
     string label;
-    vector<BDD> acces;
     bool actif;
+    vector<BDD> acces;
 
 private slots:
+    void affichageBDDProfil();
+
+    void on_ShowSQLiteButton_clicked();
 
 public:
     Profil();
     Profil(const Profil &profil);
     Profil(QWidget *parent = nullptr);
-    Profil(const string newLogin,const string newLabel,const bool newStatus);
+    Profil(const string newLogin,const string newLabel,const bool newStatus, const vector<BDD> newAcces);
     ~Profil();
 
     //Operators
@@ -43,8 +47,10 @@ public:
     // Setters
     void setLogin(const string newLogin) { login = newLogin; }
     void setLabel(const string newLabel) { label = newLabel; }
-    void setAcces(vector<BDD> newAcces) { acces = newAcces; /*mieux gérer le pointeur*/}
     void setActif(const bool newStatus) { actif = newStatus; }
+    void setAcces(vector<BDD> newAcces) { acces = newAcces;}
+    void addBDD(BDD newBDD) { acces.push_back(newBDD);}
+    void delBDD(BDD delBDD);
 
     void setProfil(string login, string label);
 };

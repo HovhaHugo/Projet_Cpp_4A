@@ -1,7 +1,6 @@
 #include "user.h"
 #include "ui_user.h"
 #include "login.h"
-#include "database.h"
 
 //CONSTRUCTEURS
 User::User() {
@@ -19,20 +18,21 @@ User::User(QWidget *parent)
 User::User(const User &user)
 {
     this->login = user.login;
+    this->mdp = user.mdp;
     this->nom = user.nom;
     this->prenom = user.prenom;
-    this->mdp = user.mdp;
     this->admin = user.admin;
     this->profils = user.profils;
 }
 
-User::User(const string login, const string nom, const string prenom, const string mdp, bool admin)
+User::User(const string login, const string mdp, const string nom, const string prenom, bool admin, vector<Profil> profils)
 {
     this->login = login;
+    this->mdp = mdp;
     this->nom = nom;
     this->prenom = prenom;
-    this->mdp = mdp;
     this->admin = admin;
+    this->profils = profils;
 }
 
 //DESTRUCTEUR
@@ -50,6 +50,7 @@ void User::delProfil(Profil supProfil){
         if(profils[iteration].getLogin()==supProfil.getLogin()) find=true;
         else iteration++;
     }
+    //if(find) profils.erase(iteration);
 }
 
 /**
@@ -95,11 +96,12 @@ void User::setUser(string login, string nom, string prenom){
  * Permet d'ajouter des donnéer dans le tableau pour afficher les profils.
  */
 void User::affichageProfilsUser(){
-    modele = new QStandardItemModel(0,4);
+    modele = new QStandardItemModel(0,3);
 
-    //création du vecteur comprenant tous les profils
-    Profil *profil1 = new Profil("JDo", "Do", 1);
-    Profil *profil2 = new Profil("JSmith", "Smith", 0);
+    //Creation du vecteur comprenant tous les profils
+    vector<BDD> acces;
+    Profil *profil1 = new Profil("JDo", "Do", 1, acces);
+    Profil *profil2 = new Profil("JSmith", "Smith", 0, acces);
     vector<Profil> vecteurProfil;
     vecteurProfil.push_back(*profil1);
     vecteurProfil.push_back(*profil2);
@@ -114,14 +116,13 @@ void User::affichageProfilsUser(){
         }else{
             modele->setItem(row,2, new QStandardItem(""));
         }
-        modele->setItem(row,3, new QStandardItem("BOUTON"));
         row++;
     }
 
+    //Labels des colonnes
     modele->setHeaderData(0,Qt::Horizontal,"Login");
     modele->setHeaderData(1,Qt::Horizontal,"Label");
     modele->setHeaderData(2,Qt::Horizontal,"Status");
-    modele->setHeaderData(3,Qt::Horizontal,"Se connecter");
 
     ui->tableView->setModel(modele);
 }
@@ -138,16 +139,17 @@ void User::on_DisconnectButton_clicked()
 }
 
 
-void User::on_testButton_clicked()
+void User::on_ShowBDDButton_clicked()
 {
-    Profil *profil1 = new Profil("JDo", "Do", 1);
-    Profil *profil2 = new Profil("JSmith", "Smith", 0);
+    vector<BDD> acces;
+    Profil *profil1 = new Profil("JDo", "Do", 1, acces);
+    Profil *profil2 = new Profil("JSmith", "Smith", 0, acces);
     vector<Profil> vecteurProfil;
     vecteurProfil.push_back(*profil1);
     vecteurProfil.push_back(*profil2);
 
-    int selection = ui->tableView->selectionModel()->selectedRows().first().row();
-    Profil profilSelected = vecteurProfil[selection];
+    //int selection = ui->tableView->selectionModel()->selectedRows().first().row();
+    //Profil profilSelected = vecteurProfil[selection];
 
     Profil profil = new Profil(nullptr);
     profil.setModal(true);

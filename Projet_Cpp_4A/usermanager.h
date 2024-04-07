@@ -14,6 +14,7 @@ public:
 
     //Lire et Ecrire dans le fichier
     void parseFile(const string pathFichier);
+    bool JsonHaveAdmin(string pathFichier);
     void writeFile(const string pathFichier);
 
     // Getter & Setter
@@ -21,6 +22,7 @@ public:
     //void setListeUsers(const vector<User> newListeUsers) {listeUsers = newListeUsers;}
 
     int searchLogin(const string loginTest, const string mdpTest);
+    User searchUser(const int Iteration){return listeUsers[Iteration];}
     User searchAdmin();
 };
 

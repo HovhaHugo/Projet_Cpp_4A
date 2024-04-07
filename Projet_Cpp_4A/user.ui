@@ -91,17 +91,17 @@
     <string>Deconnection</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="testButton">
+  <widget class="QPushButton" name="ShowBDDButton">
    <property name="geometry">
     <rect>
      <x>20</x>
      <y>350</y>
-     <width>93</width>
+     <width>111</width>
      <height>29</height>
     </rect>
    </property>
    <property name="text">
-    <string>test</string>
+    <string>Afficher BDD</string>
    </property>
   </widget>
  </widget>
