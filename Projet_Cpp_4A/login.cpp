@@ -31,7 +31,6 @@ void login::on_ButtonValider_clicked()
     QString mdpLine = ui->mdpLine->text();
 
     bool Connexion = false;
-    vector<User> listeUsers = globalUserManager.getListeUsers();    //la liste des Users tirées du json
     //On verifie que le mdp et le login soit correct
     if (idLine.toStdString() == test1.getLogin() && mdpLine.toStdString() == test1.getMdp()){
         Connexion = true;
@@ -50,6 +49,8 @@ void login::on_ButtonValider_clicked()
             user.exec();
         }
     }
+
+    vector<User> listeUsers = globalUserManager.getListeUsers();    //la liste des Users tirées du json
     /*
     for(int ItUser=0; ItUser<listeUsers.size(); ItUser++){
         if (idLine.toStdString() == listeUsers[ItUser].getLogin() && mdpLine.toStdString() == listeUsers[ItUser].getMdp()){

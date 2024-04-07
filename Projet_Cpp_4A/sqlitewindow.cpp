@@ -8,6 +8,8 @@
 #include <QStringListModel>
 #include <QMessageBox>
 
+using namespace std;
+
 
 SQLiteWindow::SQLiteWindow(QWidget *parent)
     : QDialog(parent)
@@ -59,4 +61,11 @@ void SQLiteWindow::on_listeTables_clicked(){
     QString query = "SELECT * FROM " + selectedTable;
     model->setQuery(query);
     ui->tableView->setModel(model);
+}
+
+void SQLiteWindow::on_SQLcommandButton_clicked(){
+    QString SQLrequest = ui->SQLcommandLineEdit->text();
+    QSqlQueryModel *model = new QSqlQueryModel;
+    model->setQuery(SQLrequest);
+    ui->SQLresultTableView->setModel(model);
 }
