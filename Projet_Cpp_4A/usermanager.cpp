@@ -46,11 +46,9 @@ void UserManager::parseFile(string pathFichier){
             if(valeur.isArray())
             {
 
-                //qDebug() << QString("[tableau]");
                 QJsonArray tableau = valeur.toArray();
 
                 for(int j = 0; j < tableau.size(); j++){
-                    //qDebug() << tableau[j];
                     //Comme c'est un tableau d'objet il faut le transformer
                     QJsonObject user = tableau[j].toObject();
 
@@ -78,12 +76,15 @@ void UserManager::parseFile(string pathFichier){
                         QStringList liste;
                         liste = objetProfils.keys();
                         vector<BDD> acces;
-                        //Si c'est un array, c'est que c
+                        //Si on as plus de 0 BDD, on va donc les récupérer.
                         if(nbBDD>0){
+                            //On récupére l'arrays
                             QJsonArray Bdd = objetProfils["BDD"].toArray();
                             for(int database = 0; database < Bdd.size(); database++){
+                                //Comme l'array est en fait composer d'objet, on récuper l'objet
                                 QJsonObject objetBDD = Bdd[database].toObject();
 
+                                //On récuper les données et on les stocks dans l'application.
                                 string label = objetBDD["label"].toString().toStdString();
                                 string path = objetBDD["path"].toString().toStdString();
                                 int identifiant = objetBDD["identifiant"].toInt();
@@ -106,64 +107,9 @@ void UserManager::parseFile(string pathFichier){
                 //qDebug() << QString("[valeur]");
             }
         }
-        //cout<<donnees.toStdString();
     }
 
 }
-
-/*void UserManager::parseFile(string pathFichier){
-    using json = nlohmann::json;
-    ifstream fichier(pathFichier);
-    json data = json::parse(fichier);
-    // Access the values existing in JSON data
-    json users = data.at("users");
-
-    for(int ItUser = 0; ItUser<data.value("nombre",0);ItUser++){
-
-        // Collect the values
-
-        //Tous les Users:
-        string login = users.at(ItUser).at("login");
-        string mdp = users.at(ItUser).at("mdp");
-        string nom = users.at(ItUser).at("nom");
-        string prenom = users.at(ItUser).at("prenom");
-        bool admin = false;
-        if(users.at(ItUser).at("admin") == 1) admin = true;
-        vector<Profil> profils;
-
-        json Jprofils = users.at(ItUser).at("profils");
-        //Tous les Profils du User
-        for(int ItProfil = 0; ItProfil<users.at(ItUser).value("nbprofils",0);ItProfil++){
-            string login = Jprofils.at(ItProfil).at("login");
-            string label = Jprofils.at(ItProfil).at("label");
-            bool actif = false;
-            if(Jprofils.at(ItProfil).at("actif") == 1) actif = true;
-            vector<BDD> acces;
-
-            json Jbdd = Jprofils.at(ItProfil).at("BDD");
-            //Toutes les BDD du Profil
-            for(int ItBDD = 0; ItBDD<Jprofils.at(ItProfil).value("nbBDD",0);ItBDD++){
-                int identifiant = Jbdd.at(ItBDD).at("identifiant");
-                string label = Jbdd.at(ItBDD).at("label");
-                string path = Jbdd.at(ItBDD).at("path");
-                //insertion de la BDD dans la liste du Profil en cours
-                acces.push_back(BDD(identifiant, label, path));
-            }
-            //insertion du Profil dans la liste du User en cours
-            profils.push_back(Profil(login, label, actif, acces));
-        }
-        //insertion du UserWindow dans listeUsers pour les stocker
-        User newUser =  User(login, mdp, nom, prenom, admin, profils);
-        listeUsers.push_back(newUser);
-
-        // Print the values
-
-        cout << "Login: " << login << endl;
-        cout << "Mdp: " << mdp << endl;
-        cout << "Nom: " << nom << endl;
-        cout << "Prenom: " << prenom << endl;
-    }
-}*/
 
 /**
  * @brief UserManager::JsonHaveAdmin

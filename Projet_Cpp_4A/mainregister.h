@@ -2,6 +2,7 @@
 #define MAINREGISTER_H
 
 #include <QMainWindow>
+#include "user.h"
 
 namespace Ui {
 class MainRegister;
@@ -15,11 +16,14 @@ public:
     MainRegister(QWidget *parent = nullptr);
     ~MainRegister();
 
+    vector<User> getUser(){return listUser;}
+
 private slots:
     void on_ButtonValider_clicked();
 
 private:
     Ui::MainRegister *ui;
+    vector<User> listUser;
 };
 
 #endif // MAINREGISTER_H

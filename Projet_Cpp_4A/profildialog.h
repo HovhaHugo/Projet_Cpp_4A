@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "QStandardItemModel"
 #include "bdd.h"
+#include "user.h"
 
 namespace Ui {
 class ProfilDialog;
@@ -17,6 +18,8 @@ private:
     Ui::ProfilDialog *ui;
     QStandardItemModel *modele;
 
+
+    vector<User> users;
     string loginUser;
     string loginProfil;
 
@@ -34,6 +37,8 @@ public:
     ~ProfilDialog();
 
     void setProfil(string loginUserSelect, string loginProfilSelect);
+    void setUsers(vector<User> listUser){users = listUser;};
+    vector<User> getUser(){return users;};
 };
 
 #endif // PROFILDIALOG_H

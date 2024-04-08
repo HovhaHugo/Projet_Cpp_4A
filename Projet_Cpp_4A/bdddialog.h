@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "QStandardItemModel"
+#include "user.h"
 
 using namespace std;
 
@@ -16,7 +17,7 @@ class BDDDialog : public QDialog
 
 private:
     Ui::BDDDialog *ui;
-
+    vector<User> users;
     string pathBDD;
 
 private slots:
@@ -30,6 +31,8 @@ public:
     ~BDDDialog();
 
     void setPath(string pathBDDSelected);
+    void setUsers(vector<User> listUser){users = listUser;};
+    vector<User> getUser(){return users;};
 };
 
 

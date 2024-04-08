@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "QStandardItemModel"
+#include "user.h"
 
 using namespace std;
 
@@ -20,6 +21,7 @@ private:
     QStandardItemModel *modele;
 
     string loginUser;
+    vector<User> users;
 
 private slots:
     void affichageProfilsUser();
@@ -34,6 +36,8 @@ public:
     ~UserDialog();
 
     void setUser(string login, string nom, string prenom);
+    void setUsers(vector<User> listUser){users = listUser;};
+    vector<User> getUser(){return users;};
 
 };
 
