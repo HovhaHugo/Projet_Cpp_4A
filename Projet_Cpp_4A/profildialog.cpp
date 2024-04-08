@@ -62,11 +62,9 @@ void ProfilDialog::on_pushButton_clicked()
     QFileInfo fileInfo(name);
     QString fileName = fileInfo.fileName();
 
-    modele->setItem(2,0, new QStandardItem(QString::fromStdString("3")));
-    modele->setItem(2,1, new QStandardItem(fileName));
-    modele->setItem(2,2, new QStandardItem(name));
+    BDD *newAccess = new BDD(1,fileName.toStdString(),name.toStdString());
+    this->profils[this->idProfil].addBDD(*newAccess);
 
-    BDD *newAccess = new BDD(2,fileName.toStdString(),name.toStdString());
-    this->profil.addBDD(*newAccess);
+    affichageBDDProfil();
 }
 

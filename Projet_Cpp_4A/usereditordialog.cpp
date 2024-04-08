@@ -43,10 +43,10 @@ void UserEditorDialog::affichageProfilsUser(){
 }
 
 void UserEditorDialog::on_tableView_clicked(){
-    QModelIndex selectedIndex = ui->tableView->currentIndex();
+    /*QModelIndex selectedIndex = ui->tableView->currentIndex();
     // On veut acceder a la 1ere colonne de la ligne selectionnee (le login):
     QString selectedProfil = selectedIndex.sibling(selectedIndex.row(), 0).data().toString();
-    ui->LoginUserLineEdit->setText(selectedProfil);
+    ui->LoginUserLineEdit->setText(selectedProfil);*/
 }
 
 void UserEditorDialog::on_AddUserButton_clicked(){

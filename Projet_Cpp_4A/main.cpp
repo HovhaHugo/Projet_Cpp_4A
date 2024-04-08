@@ -34,15 +34,16 @@ int main(int argc, char *argv[])
 
     string PathToJson = projectRootPath.toStdString() + "/test.json";
 */
-    //string PathToJson = "/Users/hugohovhannessian/Hugo/Etude_Sup/Polytech/DI4/S8/PlatLog_Cpp/test2.json";
-    string PathToJson = "C:/Users/benja/OneDrive/Bureau/test/test.json";
+    string PathToJson = "/Users/hugohovhannessian/Hugo/Etude_Sup/Polytech/DI4/S8/PlatLog_Cpp/test2.json";
+    //string PathToJson = "C:/Users/benja/OneDrive/Bureau/test/test.json";
 
     UserManager *userMana = new UserManager();
     userMana->parseFile(PathToJson);      //on récupère les données du json et on les met dans une variable globale
     vector<User> vectorTest = userMana->getListeUsers();
-    bool haveAdmin = userMana->JsonHaveAdmin(PathToJson);
 
-    if(haveAdmin == 0){     //Si on ne trouve pas d'admin on en crée un
+    User admin = userMana->searchAdmin();
+
+    if(admin.getLogin() == ""){     //Si on ne trouve pas d'admin on en crée un
         MainRegister r;
         r.setUsers(vectorTest);
         r.show();

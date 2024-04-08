@@ -52,7 +52,7 @@ void UserDialog::affichageProfilsUser(){
     ui->tableView->setModel(modele);
 
     //Affichage / Occultation de la partie administrateur
-    if(Utilisateur.isAdmin()){
+    if(this->user.isAdmin()){
         ui->AdminLabel->show();
         ui->AdminButton->show();
     }
