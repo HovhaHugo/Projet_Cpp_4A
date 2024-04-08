@@ -39,9 +39,9 @@
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>350</y>
-     <width>341</width>
+     <x>300</x>
+     <y>360</y>
+     <width>201</width>
      <height>32</height>
     </rect>
    </property>
@@ -125,6 +125,32 @@
      <width>351</width>
      <height>26</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="AdminButton">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>360</y>
+     <width>171</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Gérer les utilisateurs</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="AdminLabel">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>340</y>
+     <width>161</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Administrateur détecté:</string>
    </property>
   </widget>
  </widget>
