@@ -1,9 +1,8 @@
-#include "globals.h"
-
 #include "profildialog.h"
 #include "ui_profildialog.h"
 #include "bdddialog.h"
 #include <QFileDialog>
+#include <iostream>
 
 
 //CONSTRUCTEURS
@@ -19,23 +18,11 @@ ProfilDialog::ProfilDialog(QWidget *parent)
 //DESTRUCTEUR
 ProfilDialog::~ProfilDialog() {}
 
-
-//FONCTIONS QT
-
-void ProfilDialog::setProfil(string loginUserSelect, string loginProfilSelect){
-    loginUser = loginUserSelect; //on enregistre le login de l'utilisateur actuellement connecté
-    loginProfil = loginProfilSelect; //on enregistre le login du profil actuellement utilisé
-
-    //on rempli le TableView
-    affichageBDDProfil();
-}
-
 void ProfilDialog::affichageBDDProfil(){
     modele = new QStandardItemModel(0,2);
 
     //creation du vecteur comprenant toutes les BDD
-    Profil profilSelected = globalUserManager.searchUserByLogin(loginUser).searchProfilByLogin(loginProfil);
-    vector<BDD> vecteurBDD = profilSelected.getAcces();
+    vector<BDD> vecteurBDD = this->profils[this->idProfil].getAcces();
 
     for(int row=0; row<int(vecteurBDD.size());row++){
         string id = to_string(vecteurBDD[row].getIdentifiant());
@@ -77,7 +64,9 @@ void ProfilDialog::on_pushButton_clicked()
 
     modele->setItem(2,0, new QStandardItem(QString::fromStdString("3")));
     modele->setItem(2,1, new QStandardItem(fileName));
+    modele->setItem(2,2, new QStandardItem(name));
+
     BDD *newAccess = new BDD(2,fileName.toStdString(),name.toStdString());
-    globalUserManager.searchUserByLogin(loginUser).searchProfilByLogin(loginProfil).addBDD(*newAccess);
+    this->profil.addBDD(*newAccess);
 }
 

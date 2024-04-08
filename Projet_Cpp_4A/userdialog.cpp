@@ -1,5 +1,3 @@
-#include "globals.h"
-
 #include "userdialog.h"
 #include "profil.h"
 #include "profildialog.h"
@@ -22,28 +20,6 @@ UserDialog::~UserDialog(){
     delete ui;
 }
 
-//AUTRES FONCTIONS
-
-/**
- * @brief UserDialog::setUser
- * Permet de sauvegarder le nom et prenom de l'utilisateur actuellement connecter.
- * @param nom
- * Le nom de l'utilisateur actuelle
- * @param prenom
- * Le prenom de l'utilisateur actuelle
- */
-void UserDialog::setUser(string login, string nom, string prenom){
-    loginUser = login; //on enregistre le login de l'utilisateur actuellement connecté
-
-    QString nomQT = QString::fromStdString(nom);
-    QString prenomQT = QString::fromStdString(prenom);
-
-    ui->NomLabel->setText(nomQT);
-    ui->PrenomLabel->setText(prenomQT);
-
-    affichageProfilsUser();
-}
-
 //FONCTIONS QT
 
 /**
@@ -53,9 +29,9 @@ void UserDialog::setUser(string login, string nom, string prenom){
 void UserDialog::affichageProfilsUser(){
     modele = new QStandardItemModel(0,3);
 
+
     //Creation du vecteur comprenant tous les profils de l'utilisateur connecté
-    User Utilisateur = globalUserManager.searchUserByLogin(loginUser);
-    vector<Profil> vecteurProfil = Utilisateur.getProfil();
+    vector<Profil> vecteurProfil = this->user.getProfil();
 
     for(int row=0; row<int(vecteurProfil.size());row++){
         modele->setItem(row,0, new QStandardItem(QString::fromStdString(vecteurProfil[row].getLogin())));
@@ -97,14 +73,16 @@ void UserDialog::on_tableView_clicked(){
 void UserDialog::on_ShowBDDButton_clicked()
 {
     //On recherche le profil selectionne par l'utilisateur a partir de son login
-    User Utilisateur = globalUserManager.searchUserByLogin(loginUser);
-    vector<Profil> vecteurProfil = Utilisateur.getProfil();
-    string loginProfilSelected = ui->ProfilSelectedLineEdit->text().toStdString();
-    Profil profilSelected = Utilisateur.searchProfilByLogin(loginProfilSelected);
-
-
     ProfilDialog profil = new ProfilDialog(nullptr);
-    profil.setProfil(loginUser ,loginProfilSelected); //on transmet le login de l'utilisateur connecté et du profil utilisé
+    vector<Profil> vecteurProfil = this->user.getProfil();
+    int identifiantProfil= 0;
+    for(int row=0; row<int(vecteurProfil.size());row++){
+        if(vecteurProfil[row].getLogin() == ui->ProfilSelectedLineEdit->text().toStdString()){
+            identifiantProfil = row;
+        }
+    }
+    profil.setIdentifiantProfil(identifiantProfil);
+    profil.setProfils(this->user.getProfil()); //on transmet le login de l'utilisateur connecté et du profil utilisé
     profil.setModal(true);
     profil.exec();
 }

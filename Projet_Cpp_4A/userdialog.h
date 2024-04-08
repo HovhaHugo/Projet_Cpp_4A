@@ -21,7 +21,7 @@ private:
     QStandardItemModel *modele;
 
     string loginUser;
-    vector<User> users;
+    User user;
 
 private slots:
     void affichageProfilsUser();
@@ -35,9 +35,8 @@ public:
     UserDialog(QWidget *parent = nullptr);
     ~UserDialog();
 
-    void setUser(string login, string nom, string prenom);
-    void setUsers(vector<User> listUser){users = listUser;};
-    vector<User> getUser(){return users;};
+    void setUser(User newUser){user = newUser; affichageProfilsUser();};
+    User getUser(){return user;};
 
 };
 

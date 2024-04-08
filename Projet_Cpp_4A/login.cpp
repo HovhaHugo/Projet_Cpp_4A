@@ -28,14 +28,14 @@ void login::on_ButtonValider_clicked()
 
     //On verifie que le mdp et le login soit correct
     bool Connexion = false;
-    vector<User> listeUsers = globalUserManager.getListeUsers();    //la liste des Users tirées du json
+    //vector<User> listeUsers = globalUserManager.getListeUsers();    //la liste des Users tirées du json
 
-    for(int ItUser=0; ItUser<int(listeUsers.size()); ItUser++){
-        if (idLine.toStdString() == listeUsers[ItUser].getLogin() && mdpLine.toStdString() == listeUsers[ItUser].getMdp()){
+    for(int ItUser=0; ItUser<int(this->users.size()); ItUser++){
+        if (idLine.toStdString() == this->users[ItUser].getLogin() && mdpLine.toStdString() == this->users[ItUser].getMdp()){
             Connexion = true;
             hide();
             UserDialog userWindow = new UserDialog(nullptr);
-            userWindow.setUser(listeUsers[ItUser].getLogin(), listeUsers[ItUser].getNom(), listeUsers[ItUser].getPrenom());
+            userWindow.setUser(this->users[ItUser]);
             userWindow.setModal(true);
             userWindow.exec();
         }

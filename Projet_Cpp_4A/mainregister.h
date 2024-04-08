@@ -17,6 +17,7 @@ public:
     ~MainRegister();
 
     vector<User> getUser(){return listUser;}
+    void setUsers(vector<User> listUser){this->listUser = listUser;};
 
 private slots:
     void on_ButtonValider_clicked();

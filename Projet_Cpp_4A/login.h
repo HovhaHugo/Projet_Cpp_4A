@@ -17,8 +17,8 @@ public:
     login(QWidget *parent = nullptr);
     ~login();
 
-    void setUsers();
-    vector<User> getUser();
+    void setProfil(string loginUserSelect, string loginProfilSelect);
+    void setUsers(vector<User> listUser){users = listUser;};
 
 private slots:
     void on_ButtonValider_clicked();

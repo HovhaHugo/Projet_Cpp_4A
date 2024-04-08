@@ -3,8 +3,7 @@
 
 #include <QDialog>
 #include "QStandardItemModel"
-#include "bdd.h"
-#include "user.h"
+#include "profil.h"
 
 namespace Ui {
 class ProfilDialog;
@@ -18,10 +17,8 @@ private:
     Ui::ProfilDialog *ui;
     QStandardItemModel *modele;
 
-
-    vector<User> users;
-    string loginUser;
-    string loginProfil;
+    vector<Profil> profils;
+    int idProfil;
 
 private slots:
     void affichageBDDProfil();
@@ -36,9 +33,8 @@ public:
     ProfilDialog(QWidget *parent = nullptr);
     ~ProfilDialog();
 
-    void setProfil(string loginUserSelect, string loginProfilSelect);
-    void setUsers(vector<User> listUser){users = listUser;};
-    vector<User> getUser(){return users;};
+    void setProfils(vector<Profil> newProfil){ this->profils = newProfil; affichageBDDProfil();};
+    void setIdentifiantProfil(const int newIdentifiant){this->idProfil = newIdentifiant;}
 };
 
 #endif // PROFILDIALOG_H

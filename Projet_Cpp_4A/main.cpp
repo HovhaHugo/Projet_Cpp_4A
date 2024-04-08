@@ -25,16 +25,19 @@ int main(int argc, char *argv[])
 
     string PathToJson = "/Users/hugohovhannessian/Hugo/Etude_Sup/Polytech/DI4/S8/PlatLog_Cpp/test2.json";
 
-    globalUserManager.parseFile(PathToJson);      //on récupère les données du json et on les met dans une variable globale
-    vector<User> vectorTest = globalUserManager.getListeUsers();
-    bool haveAdmin = globalUserManager.JsonHaveAdmin(PathToJson);
+    UserManager *userMana = new UserManager();
+    userMana->parseFile(PathToJson);      //on récupère les données du json et on les met dans une variable globale
+    vector<User> vectorTest = userMana->getListeUsers();
+    bool haveAdmin = userMana->JsonHaveAdmin(PathToJson);
 
     if(haveAdmin == 0){     //Si on ne trouve pas d'admin on en crée un
         MainRegister r;
+        r.setUsers(vectorTest);
         r.show();
         return a.exec();
     }else{                  //Si on trouve un admin on va directement sur le login
         login w;
+        w.setUsers(vectorTest);
         w.show();
         return a.exec();
     }
