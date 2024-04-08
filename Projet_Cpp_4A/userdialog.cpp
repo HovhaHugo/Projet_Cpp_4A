@@ -3,6 +3,7 @@
 #include "profildialog.h"
 #include "ui_userdialog.h"
 #include "login.h"
+#include "usereditordialog.h"
 
 //CONSTRUCTEURS
 UserDialog::UserDialog() {}
@@ -49,6 +50,16 @@ void UserDialog::affichageProfilsUser(){
     modele->setHeaderData(2,Qt::Horizontal,"Status");
 
     ui->tableView->setModel(modele);
+
+    //Affichage / Occultation de la partie administrateur
+    if(Utilisateur.isAdmin()){
+        ui->AdminLabel->show();
+        ui->AdminButton->show();
+    }
+    else{
+        ui->AdminLabel->hide();
+        ui->AdminButton->hide();
+    }
 }
 
 /**
@@ -85,4 +96,10 @@ void UserDialog::on_ShowBDDButton_clicked()
     profil.setProfils(this->user.getProfil()); //on transmet le login de l'utilisateur connecté et du profil utilisé
     profil.setModal(true);
     profil.exec();
+}
+
+void UserDialog::on_AdminButton_clicked(){
+    UserEditorDialog userEdit = UserEditorDialog(nullptr);
+    userEdit.setModal(true);
+    userEdit.exec();
 }

@@ -29,6 +29,7 @@ private slots:
     void on_DisconnectButton_clicked();
     void on_tableView_clicked();
     void on_ShowBDDButton_clicked();
+    void on_AdminButton_clicked();
 
 public:
     UserDialog();

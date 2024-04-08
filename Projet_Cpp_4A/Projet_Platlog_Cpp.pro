@@ -19,6 +19,7 @@ SOURCES += \
     profildialog.cpp \
     user.cpp \
     userdialog.cpp \
+    usereditordialog.cpp \
     usermanager.cpp
 
 HEADERS += \
@@ -32,6 +33,7 @@ HEADERS += \
     profildialog.h \
     user.h \
     userdialog.h \
+    usereditordialog.h \
     usermanager.h
 
 FORMS += \
@@ -39,7 +41,8 @@ FORMS += \
     login.ui \
     mainregister.ui \
     profildialog.ui \
-    userdialog.ui
+    userdialog.ui \
+    usereditordialog.ui
 
 TRANSLATIONS += \
     Projet_Platlog_Cpp_fr_FR.ts
